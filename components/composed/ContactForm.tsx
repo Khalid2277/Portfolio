@@ -4,8 +4,8 @@ import Link from 'next/link';
 import { useState, type FormEvent } from 'react';
 
 interface ContactFormProps {
-  /** FormSubmit AJAX endpoint. */
-  endpoint?: string;
+  /** Form name registered with Netlify Forms. Must match across HTML + submit. */
+  name?: string;
 }
 
 type Status =
@@ -14,13 +14,29 @@ type Status =
   | { kind: 'success'; text: string }
   | { kind: 'error'; text: string };
 
-const DEFAULT_ENDPOINT = 'https://formsubmit.co/ajax/hello@alfatechlabs.net';
+const FORM_NAME = 'contact';
 
-// Direct port of the legacy contact form handler (main.js lines 173–244).
-// Same hidden FormSubmit fields (_subject, _template, _captcha, _honey),
-// same client-side regex validation, same status semantics, same fetch shape
-// (POSTs JSON with Content-Type: application/json, Accept: application/json).
-export function ContactForm({ endpoint = DEFAULT_ENDPOINT }: ContactFormProps) {
+// Netlify Forms binding. The form is detected at deploy time by Netlify's
+// form-scanner reading out/contact.html, so the `data-netlify`,
+// `data-netlify-honeypot`, and the hidden `form-name` input all need to
+// render in the static export.
+//
+// Submission is a regular form-encoded POST to the site root — Netlify
+// intercepts it and stores the message in the dashboard. Email
+// notifications are configured per-site under Site Settings → Forms →
+// Form notifications.
+//
+// The same client-side validation and status states from the legacy
+// FormSubmit handler still apply; we just point them at Netlify.
+function encodeFormData(data: FormData): string {
+  const params = new URLSearchParams();
+  data.forEach((value, key) => {
+    if (typeof value === 'string') params.append(key, value);
+  });
+  return params.toString();
+}
+
+export function ContactForm({ name = FORM_NAME }: ContactFormProps) {
   const [status, setStatus] = useState<Status>({ kind: 'idle' });
   const [submitting, setSubmitting] = useState(false);
 
@@ -29,14 +45,14 @@ export function ContactForm({ endpoint = DEFAULT_ENDPOINT }: ContactFormProps) {
     const form = e.currentTarget;
     const data = new FormData(form);
 
-    // Honeypot — silently drop bots that fill the hidden _honey field.
-    if (((data.get('_honey') as string) || '').trim() !== '') return;
+    // Netlify's bot-field honeypot — silently drop bots that fill it.
+    if (((data.get('bot-field') as string) || '').trim() !== '') return;
 
-    const name = ((data.get('name') as string) || '').trim();
+    const fullName = ((data.get('name') as string) || '').trim();
     const email = ((data.get('email') as string) || '').trim();
     const message = ((data.get('message') as string) || '').trim();
 
-    if (!name) {
+    if (!fullName) {
       setStatus({ kind: 'error', text: 'Please enter your name.' });
       return;
     }
@@ -52,28 +68,16 @@ export function ContactForm({ endpoint = DEFAULT_ENDPOINT }: ContactFormProps) {
     setSubmitting(true);
     setStatus({ kind: 'info', text: 'Sending your message…' });
 
-    // FormSubmit's /ajax/ endpoint expects JSON, not multipart FormData.
-    const payload: Record<string, unknown> = {};
-    data.forEach((value, key) => {
-      payload[key] = value;
-    });
+    // Make sure form-name is in the payload (Netlify uses this to route).
+    if (!data.has('form-name')) data.set('form-name', name);
 
     try {
-      const res = await fetch(endpoint, {
+      const res = await fetch('/', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
-        body: JSON.stringify(payload),
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: encodeFormData(data),
       });
-      const json = (await res.json().catch(() => ({}))) as { success?: boolean | string; message?: string; error?: string };
-      const ok =
-        res.ok &&
-        (json.success === true ||
-          json.success === 'true' ||
-          (!('success' in json) && res.ok));
-      if (!ok) {
-        const detail = json.message || json.error || `HTTP ${res.status}`;
-        throw new Error(detail);
-      }
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
       setStatus({
         kind: 'success',
         text: 'Thanks! Your message is on its way. We typically reply within one business day.',
@@ -96,29 +100,25 @@ export function ContactForm({ endpoint = DEFAULT_ENDPOINT }: ContactFormProps) {
       id="contact-form"
       className="card"
       style={{ padding: 'clamp(1.5rem,3vw,2.5rem)' }}
-      action={endpoint}
+      name={name}
       method="POST"
+      action="/"
+      data-netlify="true"
+      data-netlify-honeypot="bot-field"
       noValidate
       onSubmit={onSubmit}
     >
-      {/* Hidden FormSubmit configuration — preserved verbatim from legacy markup. */}
-      <input type="hidden" name="_subject" value="New contact from alfatechlabs.net" />
-      <input type="hidden" name="_template" value="table" />
-      <input type="hidden" name="_captcha" value="false" />
-      <input
-        type="text"
-        name="_honey"
-        tabIndex={-1}
-        autoComplete="off"
-        style={{
-          position: 'absolute',
-          left: '-9999px',
-          width: '1px',
-          height: '1px',
-          opacity: 0,
-        }}
-        aria-hidden="true"
-      />
+      {/* Required by Netlify so the submission is routed to this form's bucket. */}
+      <input type="hidden" name="form-name" value={name} />
+
+      {/* Netlify's honeypot — visually hidden but present in the DOM so bots
+          fill it. Real users never see it. */}
+      <p style={{ display: 'none' }}>
+        <label>
+          Don&apos;t fill this out if you&apos;re human:{' '}
+          <input name="bot-field" tabIndex={-1} autoComplete="off" />
+        </label>
+      </p>
 
       <div className="form-grid">
         <div className="field">

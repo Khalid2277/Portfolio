@@ -170,14 +170,6 @@
   right: 10%;
   animation: atl-shape-rot-ccw 52s linear infinite;
 }
-.atl-pl-shape-3 {
-  top: 120%;
-  left: 38%;
-  width: 110px;
-  height: 110px;
-  opacity: 0.45;
-  animation: atl-shape-rot-cw 70s linear infinite;
-}
 
 /* Two animations stacked: parallax translate (var on parent) + slow rotate (here).
  * To preserve both we let the orb's translate live on the parent (data-speed

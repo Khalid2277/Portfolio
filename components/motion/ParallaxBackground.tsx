@@ -86,11 +86,6 @@ export function ParallaxBackground() {
           <polygon points="0,22 0,38 26,18 26,0" fill="none" stroke="rgba(182,245,105,.3)" strokeWidth="0.6" />
         </g>
       </svg>
-      <svg className="atl-pl atl-pl-shape atl-pl-shape-3" data-speed="-0.15" viewBox="0 0 80 80" aria-hidden="true">
-        <circle cx="40" cy="40" r="32" fill="none" stroke="rgba(25,195,125,.4)" strokeWidth="0.7" />
-        <circle cx="40" cy="40" r="20" fill="none" stroke="rgba(25,195,125,.3)" strokeWidth="0.6" />
-        <circle cx="40" cy="40" r="8" fill="rgba(122,240,184,.55)" />
-      </svg>
     </div>
   );
 }
