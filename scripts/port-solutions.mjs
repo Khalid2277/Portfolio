@@ -210,8 +210,7 @@ function processSlug(slug) {
   }
 
   // Generate page.tsx.
-  const pageTsx = `import { LegacyEnhancers } from '@/components/composed/LegacyEnhancers';
-import { JsonLd } from '@/lib/jsonLd';
+  const pageTsx = `import { JsonLd } from '@/lib/jsonLd';
 import { buildMetadata } from '@/lib/seo';
 import './styles.css';
 
@@ -241,7 +240,6 @@ export default function Solution${pascal(slug)}Page() {
   return (
     <>
       <JsonLd data={jsonLd} />
-      <LegacyEnhancers />
       <div dangerouslySetInnerHTML={{ __html: body }} />
     </>
   );

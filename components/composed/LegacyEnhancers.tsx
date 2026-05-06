@@ -21,12 +21,48 @@ export function LegacyEnhancers() {
     wireDashboardTabs();
     const cleanupCounters = wireCounters();
     const cleanupAccordions = wireAccordions();
+    const cleanupReveals = wireReveals();
     return () => {
       cleanupCounters();
       cleanupAccordions();
+      cleanupReveals();
     };
   }, []);
   return null;
+}
+
+const REVEAL_SELECTORS = [
+  '.reveal',
+  '.reveal-up',
+  '.reveal-down',
+  '.reveal-left',
+  '.reveal-right',
+  '.reveal-scale',
+  '.reveal-blur',
+  '.reveal-stagger',
+  '.text-reveal',
+];
+
+function wireReveals() {
+  if (typeof IntersectionObserver === 'undefined') {
+    document
+      .querySelectorAll(REVEAL_SELECTORS.join(','))
+      .forEach((el) => el.classList.add('in'));
+    return () => {};
+  }
+  const io = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('in');
+          io.unobserve(entry.target);
+        }
+      });
+    },
+    { rootMargin: '-40px 0px -40px 0px', threshold: 0.05 }
+  );
+  document.querySelectorAll(REVEAL_SELECTORS.join(',')).forEach((el) => io.observe(el));
+  return () => io.disconnect();
 }
 
 function wireDashboardTabs() {

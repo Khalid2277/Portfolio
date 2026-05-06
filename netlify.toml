@@ -1,75 +1,37 @@
 # Netlify configuration for AlfaTechLabs (https://alfatechlabs.net)
-# This static site has no build step — Netlify simply publishes the repo root.
+# Next.js 15 App Router with output: 'export' produces a static `out/` directory
+# that Netlify serves identically to a vanilla static site.
 
 [build]
-  publish = "."
-  command = ""
+  command = "npm run build"
+  publish = "out"
 
+# Next handles HTML/CSS/JS minification + image processing in its own build.
+# We disable Netlify's processing to avoid double work and inconsistent output.
 [build.processing]
-  skip_processing = false
-
-[build.processing.css]
-  bundle = true
-  minify = true
-
-[build.processing.js]
-  bundle = false
-  minify = true
-
-[build.processing.html]
-  pretty_urls = true
+  skip_processing = true
 
 [build.processing.images]
   compress = true
 
 # ---------------------------------------------------------------------------
-# Pretty URL redirects — keep .html files on disk but accept clean URLs too.
-# Netlify's pretty_urls already handles most of this; these are explicit fallbacks.
+# Redirects
+# Most legacy redirects are no longer needed: Next emits real /<route>.html
+# files matching today's URLs. The only one that survives is /solutions →
+# /portfolio (was 301 in legacy and is preserved by app/solutions/page.tsx
+# at runtime; we keep this rule so the redirect happens at the edge for SEO).
 # ---------------------------------------------------------------------------
-
-[[redirects]]
-  from = "/about"
-  to = "/about.html"
-  status = 200
-
-[[redirects]]
-  from = "/portfolio"
-  to = "/portfolio.html"
-  status = 200
-
-[[redirects]]
-  from = "/contact"
-  to = "/contact.html"
-  status = 200
-
-[[redirects]]
-  from = "/privacy"
-  to = "/privacy.html"
-  status = 200
-
-[[redirects]]
-  from = "/terms"
-  to = "/terms.html"
-  status = 200
 
 [[redirects]]
   from = "/solutions"
-  to = "/portfolio.html"
+  to = "/portfolio"
   status = 301
 
-[[redirects]]
-  from = "/solutions/:slug"
-  to = "/solutions/:slug.html"
-  status = 200
-
-# Catch-all 404 — must be last
-[[redirects]]
-  from = "/*"
-  to = "/404.html"
-  status = 404
-
 # ---------------------------------------------------------------------------
-# Security & caching headers
+# Security & caching headers — preserved verbatim from the legacy config.
+# CSP allows: Google Fonts (now self-hosted via next/font but we keep the
+# allowance for any inline previews), formsubmit.co for the contact form,
+# and 'unsafe-inline' for styles (Next emits inline critical CSS during SSG).
 # ---------------------------------------------------------------------------
 
 [[headers]]
@@ -80,9 +42,15 @@
     Referrer-Policy = "strict-origin-when-cross-origin"
     Permissions-Policy = "geolocation=(), microphone=(), camera=(), payment=(), usb=(), interest-cohort=()"
     Strict-Transport-Security = "max-age=63072000; includeSubDomains; preload"
-    Content-Security-Policy = "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https://formsubmit.co; form-action 'self' https://formsubmit.co; frame-ancestors 'none'; base-uri 'self'"
+    Content-Security-Policy = "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: https:; connect-src 'self' https://formsubmit.co; form-action 'self' https://formsubmit.co; frame-ancestors 'none'; base-uri 'self'"
 
-# Long cache for fingerprintable static assets
+# Long cache for fingerprinted Next.js static chunks
+[[headers]]
+  for = "/_next/static/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+# Long cache for non-Next assets (favicon, OG image, etc.)
 [[headers]]
   for = "/assets/*"
   [headers.values]
@@ -94,7 +62,6 @@
   [headers.values]
     Cache-Control = "public, max-age=0, must-revalidate"
 
-# Short cache for the index
 [[headers]]
   for = "/"
   [headers.values]

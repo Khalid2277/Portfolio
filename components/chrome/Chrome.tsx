@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import { LegacyEnhancers } from '@/components/composed/LegacyEnhancers';
 import { ThemeProvider } from '@/lib/theme';
 import { MobileDrawer } from './MobileDrawer';
 import { MouseParallax } from './MouseParallax';
@@ -25,6 +26,7 @@ export function Chrome({ children }: { children: React.ReactNode }) {
       <SiteFooter />
       <ScrollTopButton />
       <MouseParallax />
+      <LegacyEnhancers />
     </ThemeProvider>
   );
 }

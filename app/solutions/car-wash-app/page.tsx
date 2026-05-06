@@ -1,4 +1,3 @@
-import { LegacyEnhancers } from '@/components/composed/LegacyEnhancers';
 import { JsonLd } from '@/lib/jsonLd';
 import { buildMetadata } from '@/lib/seo';
 import './styles.css';
@@ -114,7 +113,6 @@ export default function SolutionCarWashAppPage() {
   return (
     <>
       <JsonLd data={jsonLd} />
-      <LegacyEnhancers />
       <div dangerouslySetInnerHTML={{ __html: body }} />
     </>
   );
