@@ -3,7 +3,7 @@
 import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
 import ScrollTrigger from 'gsap/ScrollTrigger';
-import { useEffect, useRef, type ReactNode, type ElementType } from 'react';
+import { Fragment, useEffect, useRef, type ElementType } from 'react';
 
 if (typeof window !== 'undefined') {
   gsap.registerPlugin(ScrollTrigger);
@@ -109,11 +109,17 @@ export function TextReveal({
       style={style}
     >
       {words.map((word, i) => (
-        <span key={i} className="word-line">
-          <span className="word" style={{ ['--i' as string]: i } as React.CSSProperties}>
-            {word}
-          </span>{' '}
-        </span>
+        // The trailing space lives OUTSIDE the .word-line wrapper. Putting it
+        // inside would let .word-line { overflow: hidden } clip it, which is
+        // what was running every word together visually.
+        <Fragment key={i}>
+          <span className="word-line">
+            <span className="word" style={{ ['--i' as string]: i } as React.CSSProperties}>
+              {word}
+            </span>
+          </span>
+          {i < words.length - 1 ? ' ' : ''}
+        </Fragment>
       ))}
     </Tag>
   );
