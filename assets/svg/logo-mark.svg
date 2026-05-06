@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 56 56" fill="none" aria-label="AlfaTechLabs mark">
+  <rect x="0" y="0" width="56" height="56" rx="12" fill="#000000"></rect>
+  <text x="28" y="38" font-family="&#39;Space Grotesk&#39;, system-ui, sans-serif" font-weight="700" font-size="28" letter-spacing="-1.5" text-anchor="middle" fill="#F5F7FB">A</text>
+  <rect x="14" y="46" width="22" height="3" rx="1.5" fill="#19C37D"></rect>
+  <circle cx="40" cy="47.5" r="2" fill="#B6F569"></circle>
+</svg>

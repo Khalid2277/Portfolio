@@ -1,0 +1,11 @@
+# Pretty-URL rewrites (return the .html file under a clean path)
+/about               /about.html               200
+/portfolio           /portfolio.html           200
+/contact             /contact.html             200
+/privacy             /privacy.html             200
+/terms               /terms.html               200
+/solutions           /portfolio.html           301
+/solutions/:slug     /solutions/:slug.html     200
+
+# 404 fallback (must be the final rule)
+/*    /404.html    404

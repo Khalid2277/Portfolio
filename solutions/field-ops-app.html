@@ -1,0 +1,1203 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Field-Ops Mobile App — Case Study — AlfaTechLabs</title>
+  <meta name="description" content="A cross-platform Flutter field-ops app — offline-first, photo capture, auto-sync, auto-report. Built once, shipped on iOS &amp; Android." />
+  <meta name="theme-color" content="#070912" />
+  <link rel="canonical" href="https://alfatechlabs.net/solutions/field-ops-app.html" />
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1" />
+  <meta name="author" content="AlfaTechLabs" />
+
+  <!-- Favicon set -->
+  <link rel="icon" type="image/svg+xml" href="/assets/svg/favicon.svg" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon/favicon-16x16.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/favicon/apple-touch-icon.png" />
+  <link rel="manifest" href="/site.webmanifest" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="article" />
+  <meta property="og:site_name" content="AlfaTechLabs" />
+  <meta property="og:title" content="Field-Ops Mobile App — Case Study — AlfaTechLabs" />
+  <meta property="og:description" content="A cross-platform Flutter field-ops app — offline-first, photo capture, auto-sync, auto-report. Built once, shipped on iOS &amp; Android." />
+  <meta property="og:url" content="https://alfatechlabs.net/solutions/field-ops-app.html" />
+  <meta property="og:image" content="https://alfatechlabs.net/assets/og/og-default.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="AlfaTechLabs — Software, automation, and secure AI for the UAE." />
+  <meta property="og:locale" content="en_AE" />
+
+  <!-- Twitter / X -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Field-Ops Mobile App — Case Study — AlfaTechLabs" />
+  <meta name="twitter:description" content="A cross-platform Flutter field-ops app — offline-first, photo capture, auto-sync, auto-report. Built once, shipped on iOS &amp; Android." />
+  <meta name="twitter:image" content="https://alfatechlabs.net/assets/og/og-default.png" />
+  <meta name="twitter:image:alt" content="AlfaTechLabs — Software, automation, and secure AI for the UAE." />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../assets/css/main.css" />
+  <link rel="stylesheet" href="../assets/css/animations.css" />
+
+  <!-- Structured data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": "https://alfatechlabs.net/#organization",
+        "name": "AlfaTechLabs",
+        "url": "https://alfatechlabs.net/",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://alfatechlabs.net/assets/favicon/android-chrome-512x512.png",
+          "width": 512,
+          "height": 512
+        },
+        "image": "https://alfatechlabs.net/assets/og/og-default.png",
+        "email": "hello@alfatechlabs.net",
+        "description": "AlfaTechLabs builds custom software, intelligent automation, and secure agentic AI systems for SMEs, enterprises, and government bodies across the UAE.",
+        "address": {
+          "@type": "PostalAddress",
+          "addressCountry": "AE"
+        },
+        "areaServed": {
+          "@type": "Country",
+          "name": "United Arab Emirates"
+        },
+        "contactPoint": {
+          "@type": "ContactPoint",
+          "email": "hello@alfatechlabs.net",
+          "contactType": "customer support",
+          "areaServed": "AE",
+          "availableLanguage": [
+            "English",
+            "Arabic"
+          ]
+        },
+        "sameAs": []
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://alfatechlabs.net/#website",
+        "url": "https://alfatechlabs.net/",
+        "name": "AlfaTechLabs",
+        "description": "Custom software, automation, and secure AI for the UAE.",
+        "publisher": {
+          "@id": "https://alfatechlabs.net/#organization"
+        },
+        "inLanguage": "en-AE"
+      },
+      {
+        "@type": "CreativeWork",
+        "@id": "https://alfatechlabs.net/solutions/field-ops-app.html#case-study",
+        "name": "Field-Ops Mobile App",
+        "url": "https://alfatechlabs.net/solutions/field-ops-app.html",
+        "creator": {
+          "@id": "https://alfatechlabs.net/#organization"
+        },
+        "description": "A cross-platform Flutter field-ops app — offline-first, photo capture, auto-sync, auto-report. Built once, shipped on iOS & Android.",
+        "genre": "Case study",
+        "inLanguage": "en-AE"
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://alfatechlabs.net/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Portfolio",
+            "item": "https://alfatechlabs.net/portfolio.html"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "Field-Ops App",
+            "item": "https://alfatechlabs.net/solutions/field-ops-app.html"
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+  <style>
+    .uae-flag-bar{ display:inline-flex; height:9px; width:14px; border-radius:2px; overflow:hidden; box-shadow:inset 0 0 0 1px rgba(255,255,255,0.18); margin-right:.5rem; vertical-align:-1px; }
+    .uae-flag-bar > span{ flex:1; }
+    .uae-flag-bar .red{ background:#CE1126; }
+    .uae-flag-bar .green{ background:#009639; }
+    .uae-flag-bar .white{ background:#FFFFFF; }
+    .uae-flag-bar .black{ background:#000; }
+
+    .launch-stats{ display:grid; grid-template-columns:repeat(4,1fr); gap:1rem; margin-top:1.75rem; }
+    @media (max-width:880px){ .launch-stats{ grid-template-columns:repeat(2,1fr);} }
+    .launch-stat{ padding:1.25rem; border:1px solid var(--line); border-radius:var(--r-md); background:var(--bg-elev-2); }
+    .launch-stat .v{ font-family:'Space Grotesk'; font-size:1.6rem; font-weight:700; color:var(--mist); }
+    .launch-stat .l{ font-size:.78rem; color:var(--mist-60); margin-top:.3rem; font-family:'JetBrains Mono'; letter-spacing:.04em; text-transform:uppercase; }
+
+    /* ── Phone frames ─────────────────────────────────────── */
+    .phones-rail{ display:flex; gap:1.75rem; justify-content:center; flex-wrap:wrap; }
+    @media (max-width:1100px){ .phones-rail{ flex-wrap:nowrap; overflow-x:auto; padding:1rem 1.5rem 2rem; justify-content:flex-start;
+      scroll-snap-type:x mandatory; -webkit-overflow-scrolling:touch; }
+      .ph{ scroll-snap-align:center; }
+    }
+    .ph{
+      width:280px; height:580px; border-radius:42px;
+      background:#000;
+      padding:8px;
+      box-shadow:
+        0 50px 80px -30px rgba(0,0,0,.55),
+        0 25px 40px -15px rgba(0,0,0,.30),
+        inset 0 0 0 1px rgba(255,255,255,.06);
+      position:relative; flex:0 0 auto;
+    }
+    .ph::after{
+      content:""; position:absolute; inset:0;
+      border-radius:42px; pointer-events:none;
+      box-shadow:inset 0 0 0 2px rgba(255,255,255,.04);
+    }
+    .ph-screen{
+      width:100%; height:100%;
+      border-radius:34px; overflow:hidden;
+      background:#0B0F1A;
+      position:relative;
+      font-family:'Inter', sans-serif;
+      color:#E6EAF2;
+      display:flex; flex-direction:column;
+    }
+    .ph-notch{
+      position:absolute; top:8px; left:50%; transform:translateX(-50%);
+      width:96px; height:26px; background:#000; border-radius:16px; z-index:50;
+    }
+    .ph-status{
+      position:absolute; top:0; left:0; right:0; z-index:40;
+      display:flex; justify-content:space-between; align-items:center;
+      padding:13px 18px 0;
+      font-family:'Inter'; font-weight:600; font-size:11px; color:#F5F7FB;
+      pointer-events:none;
+    }
+    .ph-status .right{ display:inline-flex; align-items:center; gap:4px; }
+    .ph-body{
+      padding:42px 0 0; height:100%;
+      display:flex; flex-direction:column;
+      overflow:hidden;
+    }
+    .ph-cap{ max-width:280px; margin:1rem auto 0; text-align:center; }
+    .ph-cap .num{ font-family:'JetBrains Mono'; font-size:.7rem; letter-spacing:.14em;
+      color:var(--iris-300); text-transform:uppercase; }
+    .ph-cap .ttl{ margin-top:.4rem; font-family:'Space Grotesk'; font-weight:600;
+      font-size:1rem; color:var(--mist-90); }
+    .ph-cap .sub{ margin-top:.3rem; color:var(--mist-60); font-size:.85rem; line-height:1.5; }
+
+    /* App primitives — dark Field-Ops theme */
+    .fo-h{ padding:6px 16px 12px; display:flex; align-items:center; justify-content:space-between; }
+    .fo-h .greet{ font-size:10px; color:rgba(255,255,255,0.55); font-weight:500; letter-spacing:.02em; }
+    .fo-h .name{ font-family:'Space Grotesk'; font-weight:700; font-size:16px; color:#F5F7FB; margin-top:1px; }
+    .fo-h .av{
+      width:32px; height:32px; border-radius:50%;
+      background:linear-gradient(135deg,#19C37D,#7AF0B8); color:#072617;
+      display:flex; align-items:center; justify-content:center; font-weight:700; font-size:11px; font-family:'JetBrains Mono';
+    }
+    .fo-bar{
+      margin:0 16px 12px; padding:10px 12px;
+      background:rgba(25,195,125,0.08); border:1px solid rgba(25,195,125,0.25);
+      border-radius:10px;
+      display:flex; align-items:center; gap:.55rem; font-size:11px;
+      color:#7AF0B8; font-family:'JetBrains Mono';
+    }
+    .fo-bar .pulse{ width:8px; height:8px; border-radius:50%; background:#19C37D; box-shadow:0 0 8px #19C37D; flex:none; }
+    .fo-bar.warn{ background:rgba(245,197,107,0.08); border-color:rgba(245,197,107,0.25); color:#F5C56B; }
+    .fo-bar.warn .pulse{ background:#F5C56B; box-shadow:0 0 8px #F5C56B; }
+
+    .fo-list{ padding:0 16px; display:flex; flex-direction:column; gap:8px; overflow-y:auto; flex:1; }
+    .fo-card{
+      padding:12px; border:1px solid rgba(255,255,255,0.08); border-radius:11px;
+      background:rgba(255,255,255,0.025);
+    }
+    .fo-card .top{ display:flex; align-items:center; justify-content:space-between; margin-bottom:5px; }
+    .fo-card .top .pill{ font-size:9px; padding:2px 7px; border-radius:99px; font-family:'JetBrains Mono'; }
+    .fo-card .top .pill.now{ background:rgba(25,195,125,0.18); color:#7AF0B8; border:1px solid rgba(25,195,125,0.3); }
+    .fo-card .top .pill.next{ background:rgba(91,141,239,0.18); color:#9EBAF6; border:1px solid rgba(91,141,239,0.3); }
+    .fo-card .top .pill.done{ background:rgba(255,255,255,0.04); color:rgba(255,255,255,0.5); border:1px solid rgba(255,255,255,0.08); }
+    .fo-card .top .ts{ font-family:'JetBrains Mono'; font-size:10px; color:rgba(255,255,255,0.5); }
+    .fo-card .ttl{ color:#F5F7FB; font-weight:600; font-size:13px; margin-bottom:3px; }
+    .fo-card .addr{ font-size:11px; color:rgba(255,255,255,0.55); line-height:1.35; }
+    .fo-card .meta{ font-size:10px; color:rgba(255,255,255,0.45); font-family:'JetBrains Mono'; margin-top:5px; padding-top:5px; border-top:1px solid rgba(255,255,255,0.05); display:flex; justify-content:space-between; }
+
+    /* Checklist screen */
+    .fo-checklist{ padding:0 16px 12px; display:flex; flex-direction:column; gap:6px; }
+    .fo-check{
+      display:flex; align-items:center; gap:9px; padding:9px 11px; border-radius:9px;
+      background:rgba(255,255,255,0.025); border:1px solid rgba(255,255,255,0.06);
+      font-size:11.5px;
+    }
+    .fo-check .box{ width:16px; height:16px; border-radius:4px; border:1.5px solid rgba(255,255,255,0.3); flex:none; display:inline-flex; align-items:center; justify-content:center; }
+    .fo-check.done .box{ background:#19C37D; border-color:#19C37D; }
+    .fo-check.done .box::after{ content:"✓"; color:#072617; font-size:11px; font-weight:700; }
+    .fo-check.req .box{ border-color:#F5C56B; }
+    .fo-check b{ color:#F5F7FB; font-weight:500; }
+    .fo-check .req-lbl{ font-size:9px; padding:2px 6px; border-radius:99px; background:rgba(245,197,107,0.15); color:#F5C56B; font-family:'JetBrains Mono'; margin-left:auto; }
+
+    /* Photo grid */
+    .fo-photos{ padding:0 16px 12px; }
+    .fo-photos-ttl{ font-size:11px; color:rgba(255,255,255,0.55); font-family:'JetBrains Mono'; letter-spacing:.04em; text-transform:uppercase; padding:8px 0; }
+    .fo-photo-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:6px; }
+    .fo-photo{
+      aspect-ratio:1; border-radius:8px; border:1px solid rgba(255,255,255,0.06);
+      background:linear-gradient(135deg,rgba(91,141,239,0.15),rgba(91,141,239,0.04));
+      display:flex; align-items:center; justify-content:center; color:rgba(255,255,255,0.5); font-size:9px; font-family:'JetBrains Mono';
+      position:relative; overflow:hidden;
+    }
+    .fo-photo.captured{ background:linear-gradient(135deg,rgba(25,195,125,0.2),rgba(25,195,125,0.04)); color:#7AF0B8; }
+    .fo-photo.captured::after{ content:"✓"; position:absolute; top:5px; right:6px; color:#7AF0B8; font-size:11px; font-weight:700; }
+    .fo-photo.required{ border-color:rgba(245,197,107,0.3); color:#F5C56B; }
+    .fo-photo .lbl{ position:absolute; bottom:4px; left:5px; right:5px; text-align:center; }
+
+    /* Sync queue */
+    .fo-sync-stat{
+      margin:8px 16px 12px; padding:11px;
+      background:rgba(245,197,107,0.08); border:1px solid rgba(245,197,107,0.25); border-radius:10px;
+      display:flex; align-items:center; gap:8px;
+    }
+    .fo-sync-stat .ic{ width:30px; height:30px; border-radius:8px; background:rgba(245,197,107,0.15); border:1px solid rgba(245,197,107,0.3); color:#F5C56B; display:flex; align-items:center; justify-content:center; flex:none; }
+    .fo-sync-stat b{ color:#F5F7FB; font-size:12px; font-weight:600; display:block; }
+    .fo-sync-stat span{ color:rgba(245,197,107,0.85); font-size:10px; font-family:'JetBrains Mono'; }
+    .fo-q-row{
+      display:flex; align-items:center; gap:9px; padding:9px 16px;
+      border-bottom:1px solid rgba(255,255,255,0.04); font-size:11.5px;
+    }
+    .fo-q-row .dot{ width:8px; height:8px; border-radius:50%; flex:none; }
+    .fo-q-row .dot.q{ background:#F5C56B; }
+    .fo-q-row .dot.s{ background:#19C37D; }
+    .fo-q-row .dot.f{ background:#FF8A8A; }
+    .fo-q-row .body b{ color:#F5F7FB; display:block; font-weight:500; }
+    .fo-q-row .body span{ color:rgba(255,255,255,0.5); font-size:10px; font-family:'JetBrains Mono'; }
+    .fo-q-row .ts{ font-family:'JetBrains Mono'; font-size:10px; color:rgba(255,255,255,0.45); margin-left:auto; }
+
+    /* Report preview */
+    .fo-rpt-shell{
+      margin:8px 16px 12px; padding:14px 12px; border-radius:11px;
+      background:#FAFAFA; color:#0A0A0A;
+      font-family:'Inter';
+    }
+    .fo-rpt-shell .logo-row{ display:flex; align-items:center; justify-content:space-between; padding-bottom:9px; border-bottom:1px solid rgba(0,0,0,0.08); }
+    .fo-rpt-shell .logo{ font-family:'Space Grotesk'; font-weight:800; font-size:13px; color:#0A0A0A; letter-spacing:-.02em; }
+    .fo-rpt-shell .meta{ font-family:'JetBrains Mono'; font-size:9px; color:#6B6B6B; }
+    .fo-rpt-shell .ttl{ font-family:'Space Grotesk'; font-weight:700; font-size:13px; color:#0A0A0A; padding:9px 0 4px; }
+    .fo-rpt-shell .sub{ font-size:10px; color:#6B6B6B; font-family:'JetBrains Mono'; padding-bottom:8px; border-bottom:1px solid rgba(0,0,0,0.06); }
+    .fo-rpt-shell .ln{ display:flex; justify-content:space-between; padding:5px 0; font-size:10.5px; color:#0A0A0A; border-bottom:1px dashed rgba(0,0,0,0.07); }
+    .fo-rpt-shell .ln:last-of-type{ border-bottom:0; }
+    .fo-rpt-shell .ln span:last-child{ font-family:'JetBrains Mono'; color:#16A34A; font-weight:600; }
+    .fo-rpt-shell .stamp{
+      margin-top:9px; padding:8px; text-align:center; border:1px dashed rgba(0,0,0,0.15); border-radius:8px;
+      font-family:'JetBrains Mono'; font-size:9px; color:#6B6B6B;
+    }
+    .fo-rpt-shell .stamp b{ display:block; color:#0A0A0A; font-family:'Space Grotesk'; font-size:11px; }
+    .fo-rpt-actions{ padding:0 16px 14px; display:flex; gap:8px; }
+    .fo-rpt-actions .btn{
+      flex:1; padding:10px; text-align:center; border-radius:9px;
+      background:linear-gradient(135deg,#19C37D,#7AF0B8); color:#072617;
+      font-family:'Space Grotesk'; font-weight:700; font-size:11.5px;
+    }
+    .fo-rpt-actions .btn.alt{ background:transparent; border:1px solid rgba(255,255,255,0.15); color:#F5F7FB; }
+
+    /* ── Anatomy modules ─────────────────────────────── */
+    .module-stack{ display:flex; flex-direction:column; gap:5rem; }
+    .module{ display:grid; grid-template-columns:1fr 1.15fr; gap:3rem; align-items:center; }
+    .module.flip{ grid-template-columns:1.15fr 1fr; }
+    .module.flip .module-text{ order:2; } .module.flip .module-visual{ order:1; }
+    @media (max-width:900px){ .module, .module.flip{ grid-template-columns:1fr; gap:2rem; } .module.flip .module-text, .module.flip .module-visual{ order:initial; } }
+    .module-text .num{ font-family:'JetBrains Mono'; color:rgba(122,240,184,0.65); font-size:.75rem; letter-spacing:.16em; }
+    .module-text h3{ font-family:'Space Grotesk'; font-size:clamp(1.6rem,2vw + .8rem,2.1rem); margin:.5rem 0 1rem; color:var(--fg); letter-spacing:-.015em; }
+    .module-text .lead{ color:var(--mist-80); font-size:1.05rem; line-height:1.55; }
+    .module-text ul{ list-style:none; padding:0; margin:1.5rem 0 0; display:grid; gap:.55rem; }
+    .module-text ul li{ display:grid; grid-template-columns:auto 1fr; gap:.7rem; align-items:start; font-size:.95rem; color:var(--mist-80); padding:.4rem 0; }
+    .module-text ul li::before{
+      content:""; display:block; width:14px; height:14px; border-radius:4px;
+      background:rgba(25,195,125,0.12); border:1px solid rgba(25,195,125,0.32); margin-top:.25rem;
+      background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2319C37D' stroke-width='3'%3E%3Cpath d='M5 12l5 5L20 7'/%3E%3C/svg%3E");
+      background-size:10px 10px; background-position:center; background-repeat:no-repeat;
+    }
+    .module-visual{
+      border:1px solid var(--line); border-radius:var(--r-lg); overflow:hidden;
+      background:linear-gradient(180deg,#0B0F1A,#070912);
+      box-shadow:0 40px 80px -30px rgba(0,0,0,0.5);
+    }
+    .module-visual .mv-bar{
+      padding:.6rem 1rem; border-bottom:1px solid rgba(255,255,255,0.05);
+      font-size:.7rem; color:rgba(255,255,255,0.55); font-family:'JetBrains Mono';
+      display:flex; justify-content:space-between; align-items:center;
+    }
+    .module-visual .mv-bar .dots{ display:inline-flex; gap:.35rem; }
+    .module-visual .mv-bar .dots i{ width:8px; height:8px; border-radius:50%; background:#444; display:block; }
+    .module-visual .mv-bar .dots i:nth-child(1){ background:#ff5f56; } .module-visual .mv-bar .dots i:nth-child(2){ background:#ffbd2e; } .module-visual .mv-bar .dots i:nth-child(3){ background:#27c93f; }
+    .module-visual .mv-body{ padding:1.25rem; color:#E6EAF2; }
+
+    /* Sec grid for engineer-experience etc. */
+    .sec-grid{ display:grid; grid-template-columns:repeat(2,1fr); gap:.65rem; }
+    @media (max-width:480px){ .sec-grid{ grid-template-columns:1fr; } }
+    .sec-card{ padding:.85rem; border:1px solid rgba(255,255,255,0.06); border-radius:9px; background:rgba(255,255,255,0.015); }
+    .sec-card .hd{ display:flex; align-items:center; gap:.5rem; margin-bottom:.4rem; }
+    .sec-card .hd .ic{ width:26px; height:26px; border-radius:6px; background:rgba(25,195,125,0.12); border:1px solid rgba(25,195,125,0.22); color:#7AF0B8; display:inline-flex; align-items:center; justify-content:center; }
+    .sec-card .hd b{ color:#F5F7FB; font-size:.85rem; }
+    .sec-card .meta{ font-size:.7rem; color:rgba(255,255,255,0.6); line-height:1.5; }
+    .sec-card .stat{ font-family:'Space Grotesk'; font-weight:700; font-size:1.2rem; color:#7AF0B8; margin-top:.45rem; }
+
+    /* Web-admin console mini */
+    .admin-mini{ background:#0B0F1A; border-radius:8px; padding:14px; }
+    .admin-mini .top{ display:flex; align-items:center; justify-content:space-between; padding-bottom:11px; border-bottom:1px solid rgba(255,255,255,0.05); }
+    .admin-mini .top b{ color:#F5F7FB; font-family:'Space Grotesk'; font-size:.92rem; }
+    .admin-mini .top .meta{ font-size:.65rem; font-family:'JetBrains Mono'; color:#7AF0B8; padding:.18rem .45rem; background:rgba(25,195,125,0.08); border:1px solid rgba(25,195,125,0.25); border-radius:99px; }
+    .admin-mini .kpis{ display:grid; grid-template-columns:repeat(3,1fr); gap:.5rem; padding:.85rem 0; border-bottom:1px solid rgba(255,255,255,0.05); }
+    .admin-mini .kpi{ padding:.55rem; background:rgba(255,255,255,0.025); border-radius:7px; border:1px solid rgba(255,255,255,0.06); }
+    .admin-mini .kpi .l{ font-size:.55rem; font-family:'JetBrains Mono'; color:rgba(255,255,255,0.5); letter-spacing:.06em; text-transform:uppercase; }
+    .admin-mini .kpi .v{ font-family:'Space Grotesk'; font-weight:700; font-size:1rem; color:#F5F7FB; margin-top:.18rem; }
+    .admin-mini .kpi .v.up{ color:#7AF0B8; }
+    .admin-mini .row{ display:flex; align-items:center; gap:.55rem; padding:.55rem 0; border-bottom:1px solid rgba(255,255,255,0.04); font-size:.78rem; }
+    .admin-mini .row:last-child{ border-bottom:0; }
+    .admin-mini .row .av{ width:24px; height:24px; border-radius:6px; background:linear-gradient(135deg,#7AF0B8,#19C37D); color:#072617; font-family:'JetBrains Mono'; font-weight:700; font-size:9px; display:flex; align-items:center; justify-content:center; flex:none; }
+    .admin-mini .row .av.b{ background:linear-gradient(135deg,#9EBAF6,#5B8DEF); color:#0a1330; }
+    .admin-mini .row .av.c{ background:linear-gradient(135deg,#F0A9E6,#E66BD9); color:#330a2c; }
+    .admin-mini .row b{ color:#F5F7FB; font-size:.78rem; }
+    .admin-mini .row .det{ color:rgba(255,255,255,0.5); font-size:.66rem; font-family:'JetBrains Mono'; }
+    .admin-mini .row .pill{ font-size:.6rem; padding:.18rem .45rem; border-radius:99px; font-family:'JetBrains Mono'; margin-left:auto; }
+    .admin-mini .row .pill.live{ background:rgba(25,195,125,0.15); color:#7AF0B8; }
+    .admin-mini .row .pill.warn{ background:rgba(245,197,107,0.15); color:#F5C56B; }
+
+    /* Stories, timeline, FAQ — same patterns */
+    .stories{ display:grid; grid-template-columns:repeat(3,1fr); gap:1.5rem; }
+    @media (max-width:1000px){ .stories{ grid-template-columns:1fr; } }
+    .story{
+      border:1px solid var(--line); border-radius:var(--r-lg); overflow:hidden;
+      background:var(--bg-elev-2); display:flex; flex-direction:column;
+      transition:transform var(--d-base) var(--ease), border-color var(--d-base) var(--ease);
+    }
+    .story:hover{ transform:translateY(-4px); border-color:rgba(25,195,125,0.3); }
+    .story-head{ padding:1.5rem; border-bottom:1px solid var(--line); display:flex; flex-direction:column; gap:.75rem; background:linear-gradient(180deg,rgba(25,195,125,0.04),transparent); }
+    .story-head .seg-tag{ align-self:flex-start; font-family:'JetBrains Mono'; font-size:.65rem; letter-spacing:.1em; text-transform:uppercase; color:var(--iris-300); padding:.25rem .55rem; border-radius:99px; background:rgba(25,195,125,0.1); border:1px solid rgba(25,195,125,0.22); }
+    .story-head h3{ font-family:'Space Grotesk'; font-size:1.2rem; margin:0; color:var(--fg); }
+    .story-head .where{ font-family:'JetBrains Mono'; font-size:.72rem; color:var(--mist-60); }
+    .story-body{ padding:1.5rem; flex:1; display:flex; flex-direction:column; gap:1rem; }
+    .story-body .quote{ font-size:.92rem; color:var(--mist-80); line-height:1.55; font-style:italic; border-left:2px solid var(--iris-500); padding-left:.85rem; }
+    .story-body .quote-by{ font-size:.72rem; color:var(--mist-60); font-family:'JetBrains Mono'; margin-top:-.3rem; }
+    .story-kpis{ display:grid; grid-template-columns:repeat(2,1fr); gap:.6rem; margin-top:auto; padding-top:.5rem; border-top:1px solid var(--line); }
+    .story-kpi{ padding:.6rem 0; }
+    .story-kpi .v{ font-family:'Space Grotesk'; font-weight:700; font-size:1.4rem; color:var(--iris-300); }
+    .story-kpi .l{ font-size:.7rem; color:var(--mist-60); margin-top:.2rem; line-height:1.3; }
+
+    .timeline{ position:relative; padding-left:2rem; }
+    .timeline::before{ content:""; position:absolute; left:.75rem; top:.5rem; bottom:.5rem; width:2px; background:linear-gradient(180deg,var(--iris-500),rgba(25,195,125,0.05)); }
+    .tl-step{ position:relative; padding:0 0 1.75rem 1.5rem; }
+    .tl-step:last-child{ padding-bottom:0; }
+    .tl-step::before{ content:""; position:absolute; left:-.85rem; top:.3rem; width:18px; height:18px; border-radius:50%; background:var(--bg); border:2px solid var(--iris-500); box-shadow:0 0 0 4px rgba(25,195,125,0.12); }
+    .tl-step::after{ content:""; position:absolute; left:-.45rem; top:.7rem; width:6px; height:6px; border-radius:50%; background:var(--iris-300); }
+    .tl-step .wk{ font-family:'JetBrains Mono'; font-size:.7rem; color:var(--iris-300); letter-spacing:.06em; text-transform:uppercase; }
+    .tl-step h4{ font-family:'Space Grotesk'; font-size:1.1rem; margin:.25rem 0 .35rem; color:var(--fg); }
+    .tl-step p{ color:var(--mist-80); font-size:.92rem; line-height:1.5; margin:0; }
+
+    .faq{ display:flex; flex-direction:column; gap:.6rem; }
+    .faq details{ border:1px solid var(--line); border-radius:var(--r-md); padding:1.1rem 1.25rem; background:var(--bg-elev-2); transition:border-color var(--d-base) var(--ease); }
+    .faq details[open]{ border-color:rgba(25,195,125,0.25); }
+    .faq summary{ cursor:pointer; list-style:none; font-weight:600; color:var(--fg); display:flex; align-items:center; justify-content:space-between; gap:1rem; font-family:'Space Grotesk'; font-size:1rem; }
+    .faq summary::-webkit-details-marker{ display:none; }
+    .faq summary::after{ content:"+"; font-family:'JetBrains Mono'; font-size:1.3rem; color:var(--iris-300); transition:transform var(--d-base); flex:none; }
+    .faq details[open] summary::after{ content:"−"; }
+    .faq details p{ margin:.85rem 0 0; color:var(--mist-80); font-size:.95rem; line-height:1.55; }
+
+    .integ-grid{ display:grid; grid-template-columns:repeat(6,1fr); gap:.75rem; }
+    @media (max-width:880px){ .integ-grid{ grid-template-columns:repeat(3,1fr); } }
+    @media (max-width:480px){ .integ-grid{ grid-template-columns:repeat(2,1fr); } }
+    .integ{
+      aspect-ratio:1.5; border:1px solid var(--line); border-radius:var(--r-md);
+      background:var(--bg-elev-2);
+      display:flex; flex-direction:column; align-items:center; justify-content:center; gap:.45rem; padding:.85rem;
+      transition:all var(--d-base) var(--ease);
+    }
+    .integ:hover{ border-color:rgba(25,195,125,0.3); transform:translateY(-2px); }
+    .integ .lo{ font-family:'Space Grotesk'; font-weight:700; font-size:.85rem; color:var(--fg); }
+    .integ .ty{ font-size:.6rem; color:var(--mist-60); font-family:'JetBrains Mono'; letter-spacing:.06em; text-transform:uppercase; }
+
+    .ribbon{
+      border-top:1px solid var(--line); border-bottom:1px solid var(--line);
+      padding:1.5rem 0; text-align:center;
+      color:var(--mist-60); font-size:.95rem;
+      background:linear-gradient(180deg,rgba(25,195,125,0.02),transparent);
+    }
+    .ribbon a{ color:var(--iris-300); }
+  </style>
+</head>
+<body>
+
+<a class="skip-link" href="#main">Skip to main content</a>
+
+<header class="site-header">
+  <div class="container nav">
+    <a href="../index.html" class="brand" aria-label="AlfaTechLabs home"><span class="brand-wordmark">AlfaTechLabs</span><span class="brand-rule" aria-hidden="true"></span></a>
+    <nav><ul class="nav-links"><li><a href="../index.html">Home</a></li><li><a href="../about.html">About</a></li><li><a href="../portfolio.html" class="active">Portfolio</a></li><li><a href="../contact.html">Contact</a></li></ul></nav>
+    <div class="nav-cta"><a href="../contact.html" class="btn btn-outline btn-sm">Let's Talk</a><a href="../contact.html" class="btn btn-primary btn-sm">Book a Demo</a><button class="menu-toggle" aria-label="Open menu"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg></button></div>
+  </div>
+</header>
+
+<div class="drawer"><div class="drawer-panel"><div style="display:flex;justify-content:space-between;align-items:center;"><span class="brand"><span class="brand-wordmark">AlfaTechLabs</span><span class="brand-rule" aria-hidden="true"></span></span><button class="drawer-close menu-toggle" style="display:inline-flex;" aria-label="Close menu"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6 6 18M6 6l12 12"/></svg></button></div><nav><a href="../index.html">Home</a><a href="../about.html">About</a><a href="../portfolio.html" class="active">Portfolio</a><a href="../contact.html">Contact</a></nav></div></div>
+
+<main id="main">
+
+<!-- ============== HERO ============== -->
+<section class="page-hero">
+  <div class="glow" aria-hidden="true"></div>
+  <div class="container reveal">
+    <a href="../portfolio.html" class="btn btn-ghost" style="padding:0;color:var(--mist-60);">← Back to portfolio</a>
+    <div style="display:flex;gap:.6rem;flex-wrap:wrap;margin-top:1.25rem;">
+      <span class="badge"><span class="uae-flag-bar"><span class="red"></span><span class="green"></span><span class="white"></span><span class="black"></span></span>Built for the UAE</span>
+      <span class="badge badge-success">● Live in production</span>
+      <span class="badge">iOS · Android · Flutter</span>
+      <span class="badge">Offline-first</span>
+    </div>
+    <h1 style="margin-top:1.25rem;max-width:24ch;">A site visit, captured on the phone — synced before the engineer leaves the parking lot.</h1>
+    <p class="lead" style="max-width:64ch;">A cross-platform field-ops app for a UAE inspection-services firm. Engineers run their day on the phone, capture photos and forms offline at remote sites, and auto-generate the customer-ready report on the drive back. Built once in Flutter, shipped to both stores.</p>
+
+    <div style="display:flex;gap:1rem;margin-top:1.5rem;flex-wrap:wrap;">
+      <a href="../contact.html" class="btn btn-primary">Talk to our mobile team
+        <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+      </a>
+      <a href="#screens" class="btn btn-outline">See the screens ↓</a>
+    </div>
+
+    <div class="launch-stats">
+      <div class="launch-stat"><div class="v"><span data-count="120" data-suffix=" engineers">0 engineers</span></div><div class="l">on it daily</div></div>
+      <div class="launch-stat"><div class="v"><span data-count="8.2" data-suffix="K visits">0K visits</span></div><div class="l">synced offline</div></div>
+      <div class="launch-stat"><div class="v"><span data-count="42" data-suffix="%">0%</span></div><div class="l">faster report turnaround</div></div>
+      <div class="launch-stat"><div class="v"><span data-count="99.4" data-suffix="%">0%</span></div><div class="l">first-attempt sync success</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============== PHONES ============== -->
+<section class="section" id="screens" style="padding-top:0;">
+  <div class="container reveal">
+    <div class="section-head" style="margin-bottom:2rem;">
+      <span class="eyebrow">The engineer's day · 4 screens</span>
+      <h2 style="margin-top:1rem;max-width:22ch;">Their morning, in their hand. From route to report.</h2>
+      <p class="lead" style="max-width:62ch;">The same tap-flow whether they're online at the office or offline two hours into the desert. The app waits for the network; the engineer doesn't.</p>
+    </div>
+
+    <div class="phones-rail">
+
+      <!-- PHONE 01: ROUTE -->
+      <div>
+        <div class="ph">
+          <div class="ph-screen">
+            <div class="ph-notch"></div>
+            <div class="ph-status"><span>9:41</span><span class="right">●●●●● 5G</span></div>
+            <div class="ph-body">
+              <div class="fo-h">
+                <div>
+                  <div class="greet">Wednesday · 6 visits today</div>
+                  <div class="name">Ahmed K.</div>
+                </div>
+                <div class="av">AK</div>
+              </div>
+              <div class="fo-bar">
+                <div class="pulse"></div>
+                <span>Online · synced 14s ago</span>
+              </div>
+              <div class="fo-list">
+                <div class="fo-card">
+                  <div class="top">
+                    <span class="pill now">NOW</span>
+                    <span class="ts">09:30 — 10:15</span>
+                  </div>
+                  <div class="ttl">Pressure-vessel inspection</div>
+                  <div class="addr">Al Quoz Industrial 3, Warehouse 18 · 4.2 km</div>
+                  <div class="meta"><span>Job #INS-4892</span><span>Customer: Al Mawared LLC</span></div>
+                </div>
+                <div class="fo-card">
+                  <div class="top">
+                    <span class="pill next">NEXT</span>
+                    <span class="ts">10:45 — 11:30</span>
+                  </div>
+                  <div class="ttl">Annual lift-equipment audit</div>
+                  <div class="addr">Jebel Ali Free Zone, Block A · 18 km</div>
+                  <div class="meta"><span>Job #INS-4893</span><span>Customer: Sea-Lift Services</span></div>
+                </div>
+                <div class="fo-card">
+                  <div class="top">
+                    <span class="pill next">12:30</span>
+                    <span class="ts">12:30 — 13:15</span>
+                  </div>
+                  <div class="ttl">Cooling-tower thermography</div>
+                  <div class="addr">Dubai Investments Park · 26 km</div>
+                  <div class="meta"><span>Job #INS-4894</span><span>Customer: GreenCool</span></div>
+                </div>
+                <div class="fo-card">
+                  <div class="top">
+                    <span class="pill done">DONE</span>
+                    <span class="ts">08:00 — 08:45</span>
+                  </div>
+                  <div class="ttl">Pre-tender site survey</div>
+                  <div class="addr">Sharjah Industrial 12 · synced 09:14</div>
+                  <div class="meta"><span>Job #INS-4891</span><span>Report sent to customer</span></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="ph-cap">
+          <div class="num">SCREEN 01</div>
+          <div class="ttl">Today's route</div>
+          <div class="sub">Six visits, ETAs, distances, customer context — all on the home screen, all reorderable on the go.</div>
+        </div>
+      </div>
+
+      <!-- PHONE 02: VISIT DETAIL -->
+      <div>
+        <div class="ph">
+          <div class="ph-screen">
+            <div class="ph-notch"></div>
+            <div class="ph-status"><span>10:08</span><span class="right">●●●○○ 4G</span></div>
+            <div class="ph-body">
+              <div class="fo-h">
+                <div>
+                  <div class="greet">Visit · Job #INS-4892</div>
+                  <div class="name">Pressure-vessel inspection</div>
+                </div>
+                <div class="av">AK</div>
+              </div>
+              <div class="fo-bar">
+                <div class="pulse"></div>
+                <span>In progress · 38 min on site</span>
+              </div>
+              <div class="fo-checklist">
+                <div class="fo-check done"><div class="box"></div><b>Site induction signed</b></div>
+                <div class="fo-check done"><div class="box"></div><b>PPE confirmed</b></div>
+                <div class="fo-check done"><div class="box"></div><b>Vessel ID tag verified</b></div>
+                <div class="fo-check done"><div class="box"></div><b>Pressure gauge reading logged</b></div>
+                <div class="fo-check req"><div class="box"></div><b>Safety-valve test</b><span class="req-lbl">REQUIRED</span></div>
+                <div class="fo-check req"><div class="box"></div><b>Corrosion zone photos</b><span class="req-lbl">3 OF 4</span></div>
+                <div class="fo-check"><div class="box"></div><b>Customer signature</b></div>
+              </div>
+              <div class="fo-photos">
+                <div class="fo-photos-ttl">Photo proofs · 3 of 4 captured</div>
+                <div class="fo-photo-grid">
+                  <div class="fo-photo captured"><span class="lbl">FRONT GATE</span></div>
+                  <div class="fo-photo captured"><span class="lbl">VESSEL TAG</span></div>
+                  <div class="fo-photo captured"><span class="lbl">METER</span></div>
+                  <div class="fo-photo required"><span class="lbl">+ ZONE 4</span></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="ph-cap">
+          <div class="num">SCREEN 02</div>
+          <div class="ttl">Visit checklist + photo proof</div>
+          <div class="sub">Required photos enforced before sign-off. Customer signature captured on-screen and tied to the visit GPS &amp; timestamp.</div>
+        </div>
+      </div>
+
+      <!-- PHONE 03: OFFLINE / SYNC -->
+      <div>
+        <div class="ph">
+          <div class="ph-screen">
+            <div class="ph-notch"></div>
+            <div class="ph-status"><span>11:14</span><span class="right">○○○○○ OFFLINE</span></div>
+            <div class="ph-body">
+              <div class="fo-h">
+                <div>
+                  <div class="greet">Sync queue · offline since 10:42</div>
+                  <div class="name">Auto-sync when online</div>
+                </div>
+                <div class="av">AK</div>
+              </div>
+              <div class="fo-sync-stat">
+                <div class="ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12a9 9 0 1 1-9-9"/><path d="M21 3v6h-6"/></svg></div>
+                <div>
+                  <b>14 items queued · 32 MB</b>
+                  <span>Will sync automatically when 4G/Wi-Fi returns</span>
+                </div>
+              </div>
+              <div style="font-size:11px; color:rgba(255,255,255,0.5); font-family:'JetBrains Mono'; letter-spacing:.04em; text-transform:uppercase; padding:0 16px 6px;">Queue</div>
+              <div style="overflow-y:auto; flex:1;">
+                <div class="fo-q-row">
+                  <div class="dot q"></div>
+                  <div class="body"><b>Visit #INS-4892 · sign-off</b><span>Photos: 8 · Forms: 2 · Signature</span></div>
+                  <span class="ts">queued</span>
+                </div>
+                <div class="fo-q-row">
+                  <div class="dot q"></div>
+                  <div class="body"><b>Visit #INS-4892 · meter photo</b><span>HEIC · 3.4 MB · gps fixed</span></div>
+                  <span class="ts">queued</span>
+                </div>
+                <div class="fo-q-row">
+                  <div class="dot q"></div>
+                  <div class="body"><b>Visit #INS-4892 · zone 1–3</b><span>3 photos · 11.2 MB</span></div>
+                  <span class="ts">queued</span>
+                </div>
+                <div class="fo-q-row">
+                  <div class="dot s"></div>
+                  <div class="body"><b>Visit #INS-4891 · report</b><span>Sent to customer · webhook ack</span></div>
+                  <span class="ts">synced 09:14</span>
+                </div>
+                <div class="fo-q-row">
+                  <div class="dot s"></div>
+                  <div class="body"><b>Daily check-in</b><span>Vehicle KM · PPE confirmed</span></div>
+                  <span class="ts">synced 07:54</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="ph-cap">
+          <div class="num">SCREEN 03</div>
+          <div class="ttl">Offline-first sync</div>
+          <div class="sub">Hours offline at remote sites is fine. The app captures everything locally and syncs automatically when connectivity returns.</div>
+        </div>
+      </div>
+
+      <!-- PHONE 04: REPORT PREVIEW -->
+      <div>
+        <div class="ph">
+          <div class="ph-screen">
+            <div class="ph-notch"></div>
+            <div class="ph-status"><span>11:48</span><span class="right">●●●●○ 4G</span></div>
+            <div class="ph-body">
+              <div class="fo-h">
+                <div>
+                  <div class="greet">Report · ready for review</div>
+                  <div class="name">INS-4892</div>
+                </div>
+                <div class="av">AK</div>
+              </div>
+              <div class="fo-bar">
+                <div class="pulse"></div>
+                <span>Auto-generated · 14s after sync</span>
+              </div>
+              <div class="fo-rpt-shell">
+                <div class="logo-row">
+                  <div class="logo">INSPECT.AE</div>
+                  <div class="meta">REPORT #INS-4892</div>
+                </div>
+                <div class="ttl">Pressure-vessel inspection</div>
+                <div class="sub">Al Mawared LLC · Al Quoz Ind. 3 · 06 May 2026</div>
+                <div class="ln"><span>Vessel ID</span><span>PV-AM-0218</span></div>
+                <div class="ln"><span>Operating pressure</span><span>11.4 bar</span></div>
+                <div class="ln"><span>Safety-valve test</span><span>PASS</span></div>
+                <div class="ln"><span>Corrosion zones</span><span>4 / 4 OK</span></div>
+                <div class="ln"><span>Outcome</span><span>CERTIFIED</span></div>
+                <div class="stamp">
+                  <b>Engineer · Ahmed K.</b>
+                  Signed · 06-May-2026 11:34 GST
+                </div>
+              </div>
+              <div class="fo-rpt-actions">
+                <div class="btn alt">Edit</div>
+                <div class="btn">Send to customer</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="ph-cap">
+          <div class="num">SCREEN 04</div>
+          <div class="ttl">Auto-generated report</div>
+          <div class="sub">Engineer reviews, signs, sends — customer gets a branded PDF in their inbox before the engineer is back at the depot.</div>
+        </div>
+      </div>
+
+    </div>
+
+    <p style="text-align:center; color:var(--mist-60); font-size:.85rem; margin-top:1.5rem; font-family:'JetBrains Mono';">A representative app session. Job IDs, customer names and figures shown are illustrative — every deployment runs on the client's own customer base, jobs and forms.</p>
+  </div>
+</section>
+
+<!-- ============== ANATOMY ============== -->
+<section class="section">
+  <div class="container">
+    <div class="section-head reveal" style="margin-bottom:3.5rem;">
+      <span class="eyebrow">Anatomy</span>
+      <h2 style="margin-top:1rem;max-width:22ch;">Five capabilities. Two apps. One backbone.</h2>
+      <p class="lead" style="max-width:62ch;">A mobile app for the engineer, a web console for dispatch. Same backend, same source of truth, same audit trail.</p>
+    </div>
+
+    <div class="module-stack reveal-stagger">
+
+      <!-- 01 OFFLINE-FIRST -->
+      <div class="module">
+        <div class="module-text">
+          <div class="num">01 — Offline-first capture</div>
+          <h3>Built for the desert, the basement, and the steel-clad warehouse.</h3>
+          <p class="lead">Connectivity is not assumed. Every action — checklist tick, photo capture, signature, form fill — completes instantly on the phone, queued for sync. The engineer never waits for a server.</p>
+          <ul>
+            <li>Optimistic UI: every tap is instant, sync is async</li>
+            <li>Local SQLite cache · encrypted · isolated per-engineer</li>
+            <li>Photo upload with chunked retry · resumable on reconnect</li>
+            <li>Automatic conflict resolution (last-write-wins for non-critical, manual for sign-offs)</li>
+            <li>Sync indicator shows queue depth and last successful sync</li>
+          </ul>
+        </div>
+        <div class="module-visual">
+          <div class="mv-bar"><div class="dots"><i></i><i></i><i></i></div><span>Offline behaviour · production</span></div>
+          <div class="mv-body">
+            <div class="sec-grid">
+              <div class="sec-card">
+                <div class="hd"><div class="ic"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12a9 9 0 1 1-9-9"/><path d="M21 3v6h-6"/></svg></div><b>Sync success</b></div>
+                <div class="meta">First-attempt rate · 30 days</div>
+                <div class="stat">99.4%</div>
+              </div>
+              <div class="sec-card">
+                <div class="hd"><div class="ic"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 8v4l3 2"/></svg></div><b>Max offline</b></div>
+                <div class="meta">Tested in field · without data loss</div>
+                <div class="stat">22 hrs</div>
+              </div>
+              <div class="sec-card">
+                <div class="hd"><div class="ic"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="M7 10l5 5 5-5M12 15V3"/></svg></div><b>Queue size</b></div>
+                <div class="meta">Avg per engineer · per day</div>
+                <div class="stat">68 items</div>
+              </div>
+              <div class="sec-card">
+                <div class="hd"><div class="ic"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></div><b>Encryption</b></div>
+                <div class="meta">Local cache · AES-256 at rest</div>
+                <div class="stat">Encrypted</div>
+              </div>
+              <div class="sec-card">
+                <div class="hd"><div class="ic"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 22h20z"/></svg></div><b>Conflict cases</b></div>
+                <div class="meta">Surface to manager · don't auto-merge</div>
+                <div class="stat">0.2%</div>
+              </div>
+              <div class="sec-card">
+                <div class="hd"><div class="ic"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M9 12l2 2 4-4"/></svg></div><b>Data loss</b></div>
+                <div class="meta">Across 8.2K visits · 30 days</div>
+                <div class="stat">0 visits</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 02 PHOTO+FORM RULES -->
+      <div class="module flip">
+        <div class="module-text">
+          <div class="num">02 — Photo &amp; form rules</div>
+          <h3>The right evidence, every time — no "engineer forgot the photo" tickets.</h3>
+          <p class="lead">Per-service-line forms with required photo proofs. The app refuses to mark a visit complete until the proofs are captured. Tag, GPS, timestamp, and engineer ID stamped onto every shot.</p>
+          <ul>
+            <li>Form designer in the admin console · no engineering needed for new service lines</li>
+            <li>Required-photo enforcement: "front gate", "vessel tag", "meter close-up"</li>
+            <li>Photo metadata: GPS fix, heading, timestamp, engineer ID</li>
+            <li>Auto-cropping &amp; perspective correction for tag plates</li>
+            <li>Customer signature captured on-screen · linked to visit hash</li>
+          </ul>
+        </div>
+        <div class="module-visual">
+          <div class="mv-bar"><div class="dots"><i></i><i></i><i></i></div><span>Required proofs · pressure-vessel form</span></div>
+          <div class="mv-body">
+            <div class="fo-checklist" style="padding:0;">
+              <div class="fo-check done"><div class="box"></div><b>Site induction signed</b></div>
+              <div class="fo-check done"><div class="box"></div><b>Vessel ID tag · close-up photo</b></div>
+              <div class="fo-check done"><div class="box"></div><b>Pressure-gauge reading · annotated photo</b></div>
+              <div class="fo-check done"><div class="box"></div><b>Safety-valve test result · numeric</b></div>
+              <div class="fo-check req"><div class="box"></div><b>Corrosion zone photos</b><span class="req-lbl">3 OF 4</span></div>
+              <div class="fo-check req"><div class="box"></div><b>Customer signature on tablet</b><span class="req-lbl">REQUIRED</span></div>
+            </div>
+            <div style="margin-top:.85rem;padding-top:.7rem;border-top:1px solid rgba(255,255,255,0.06);font-size:.74rem;color:rgba(255,255,255,0.55);font-family:'JetBrains Mono';line-height:1.5;">
+              Form: PRESSURE-VESSEL-v3.2 · 14 fields · 8 required photos · GPS-enforced · last published 6 days ago
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 03 AUTO-REPORT -->
+      <div class="module">
+        <div class="module-text">
+          <div class="num">03 — Auto-report generation</div>
+          <h3>Customer gets the PDF before the engineer is back at the depot.</h3>
+          <p class="lead">14 seconds after a visit syncs, the report renders, the engineer reviews on their phone, signs, and sends. Branded for the client, customer-facing, and tied to the visit's audit hash.</p>
+          <ul>
+            <li>Branded PDF rendering with the client's logo, fonts, signature blocks</li>
+            <li>Customer-friendly summary + technical appendix per inspection type</li>
+            <li>Signature, stamp, audit-hash on the cover page</li>
+            <li>Email + WhatsApp delivery options · receipt webhook on read</li>
+            <li>Archived alongside source data in S3 · 7-year retention</li>
+          </ul>
+        </div>
+        <div class="module-visual">
+          <div class="mv-bar"><div class="dots"><i></i><i></i><i></i></div><span>Sample report · INS-4892</span></div>
+          <div class="mv-body">
+            <div class="fo-rpt-shell" style="margin:0;">
+              <div class="logo-row">
+                <div class="logo">INSPECT.AE</div>
+                <div class="meta">REPORT #INS-4892</div>
+              </div>
+              <div class="ttl">Pressure-vessel annual inspection</div>
+              <div class="sub">Al Mawared LLC · Al Quoz Ind. 3 · 06 May 2026</div>
+              <div class="ln"><span>Vessel ID</span><span>PV-AM-0218</span></div>
+              <div class="ln"><span>Operating pressure</span><span>11.4 bar</span></div>
+              <div class="ln"><span>Safety-valve test</span><span>PASS</span></div>
+              <div class="ln"><span>Corrosion zones (4 of 4)</span><span>OK</span></div>
+              <div class="ln"><span>Wall thickness — min reading</span><span>9.8 mm</span></div>
+              <div class="ln"><span>Hydro-test pressure</span><span>17.0 bar</span></div>
+              <div class="ln"><span>Outcome</span><span>CERTIFIED</span></div>
+              <div class="stamp">
+                <b>Engineer · Ahmed K. · L4 inspector</b>
+                Signed · 06-May-2026 11:34 GST · audit-hash 8f3a2c…
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 04 ENGINEER EXPERIENCE -->
+      <div class="module flip">
+        <div class="module-text">
+          <div class="num">04 — Engineer experience</div>
+          <h3>The thing they actually open at 7am — not the thing they avoid.</h3>
+          <p class="lead">Route optimization, mileage capture, expense logging, and tomorrow's schedule — all in one app. We measured adoption: 96% of engineers open it before 8am.</p>
+          <ul>
+            <li>Route optimization across the day's visits · re-routes on traffic</li>
+            <li>Vehicle KM auto-captured at start &amp; end of day</li>
+            <li>Expense capture with receipt photo + auto-OCR'd amount</li>
+            <li>Tomorrow's schedule pre-loaded for offline review the night before</li>
+            <li>Push notifications: re-routing, customer cancellation, urgent reroute</li>
+          </ul>
+        </div>
+        <div class="module-visual">
+          <div class="mv-bar"><div class="dots"><i></i><i></i><i></i></div><span>Engineer adoption · last 30 days</span></div>
+          <div class="mv-body">
+            <div class="sec-grid">
+              <div class="sec-card">
+                <div class="hd"><div class="ic"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 6v6l4 2"/></svg></div><b>Open before 8am</b></div>
+                <div class="meta">Daily active · weekday avg</div>
+                <div class="stat">96%</div>
+              </div>
+              <div class="sec-card">
+                <div class="hd"><div class="ic"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 22h20z"/></svg></div><b>Crash-free</b></div>
+                <div class="meta">Sessions · all platforms</div>
+                <div class="stat">99.7%</div>
+              </div>
+              <div class="sec-card">
+                <div class="hd"><div class="ic"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12l9-9 9 9-9 9z"/></svg></div><b>Avg session</b></div>
+                <div class="meta">Per-visit duration · in-app</div>
+                <div class="stat">22 min</div>
+              </div>
+              <div class="sec-card">
+                <div class="hd"><div class="ic"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5v14"/></svg></div><b>Visits/engineer</b></div>
+                <div class="meta">vs paper baseline</div>
+                <div class="stat">+38%</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 05 ADMIN CONSOLE -->
+      <div class="module">
+        <div class="module-text">
+          <div class="num">05 — Web admin console</div>
+          <h3>Dispatch sees the fleet. Operations sees the SLAs. Customers see proof.</h3>
+          <p class="lead">A web console for dispatch, ops, and finance. Live engineer locations, SLA tracking, customer portal handoff, billing-ready exports. Same backend as the app — no double-entry.</p>
+          <ul>
+            <li>Live map view · all engineers · ETAs · SLA status</li>
+            <li>Job queue · assign, reroute, escalate</li>
+            <li>SLA tracking with breach alerts · auto-escalation rules</li>
+            <li>Customer portal · branded · self-serve report download</li>
+            <li>Finance export: billable hours, mileage, materials · CSV / API</li>
+          </ul>
+        </div>
+        <div class="module-visual">
+          <div class="mv-bar"><div class="dots"><i></i><i></i><i></i></div><span>Dispatch · live · 18 engineers in field</span></div>
+          <div class="mv-body">
+            <div class="admin-mini">
+              <div class="top">
+                <b>Live operations · today</b>
+                <span class="meta">● auto-refresh 2s</span>
+              </div>
+              <div class="kpis">
+                <div class="kpi"><div class="l">In-field</div><div class="v">18 / 22</div></div>
+                <div class="kpi"><div class="l">Visits done</div><div class="v up">42</div></div>
+                <div class="kpi"><div class="l">SLA breach</div><div class="v">1</div></div>
+              </div>
+              <div class="row">
+                <div class="av">AK</div>
+                <div><b>Ahmed K.</b><div class="det">Visit #INS-4892 · in progress · Al Quoz</div></div>
+                <span class="pill live">ON SITE</span>
+              </div>
+              <div class="row">
+                <div class="av b">RM</div>
+                <div><b>Reem M.</b><div class="det">Visit #INS-4901 · enroute · ETA 11:42</div></div>
+                <span class="pill live">ENROUTE</span>
+              </div>
+              <div class="row">
+                <div class="av c">FH</div>
+                <div><b>Fahad H.</b><div class="det">Visit #INS-4895 · waiting customer · 12 min over</div></div>
+                <span class="pill warn">WAIT</span>
+              </div>
+              <div class="row">
+                <div class="av">SK</div>
+                <div><b>Salem K.</b><div class="det">Visit #INS-4903 · on time · ETA 12:08</div></div>
+                <span class="pill live">ENROUTE</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============== INTEGRATIONS ============== -->
+<section class="section">
+  <div class="container">
+    <div class="section-head reveal" style="margin-bottom:2rem;">
+      <span class="eyebrow">Integrations</span>
+      <h2 style="margin-top:1rem;max-width:22ch;">Wires into the systems you already run.</h2>
+      <p class="lead" style="max-width:62ch;">Single sign-on, dispatch CRM, asset register, finance — meet you where your fleet already lives.</p>
+    </div>
+
+    <div class="integ-grid reveal-stagger">
+      <div class="integ"><div class="lo">Flutter</div><div class="ty">iOS · Android</div></div>
+      <div class="integ"><div class="lo">Firebase</div><div class="ty">Auth · FCM</div></div>
+      <div class="integ"><div class="lo">Postgres</div><div class="ty">Backend</div></div>
+      <div class="integ"><div class="lo">S3</div><div class="ty">Photo store</div></div>
+      <div class="integ"><div class="lo">Mapbox</div><div class="ty">Routing</div></div>
+      <div class="integ"><div class="lo">Twilio</div><div class="ty">WhatsApp · SMS</div></div>
+      <div class="integ"><div class="lo">SAP · Oracle</div><div class="ty">ERP</div></div>
+      <div class="integ"><div class="lo">Salesforce</div><div class="ty">CRM</div></div>
+      <div class="integ"><div class="lo">Zoho · Xero</div><div class="ty">Finance</div></div>
+      <div class="integ"><div class="lo">Azure AD</div><div class="ty">SSO</div></div>
+      <div class="integ"><div class="lo">PDF · Pad</div><div class="ty">Render</div></div>
+      <div class="integ"><div class="lo">REST · Webhook</div><div class="ty">Anything</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============== STORIES ============== -->
+<section class="section">
+  <div class="container">
+    <div class="section-head reveal" style="margin-bottom:2.5rem;">
+      <span class="eyebrow">In production</span>
+      <h2 style="margin-top:1rem;max-width:22ch;">Three field-services teams. Same backbone.</h2>
+      <p class="lead" style="max-width:62ch;">Anonymized at the client's request. Sector, scale and outcomes are real and verifiable on request under NDA.</p>
+    </div>
+
+    <div class="stories reveal-stagger">
+
+      <article class="story">
+        <div class="story-head">
+          <span class="seg-tag">Inspection-services · 120 engineers</span>
+          <h3>Reports go out the same day — instead of three days later.</h3>
+          <span class="where">Industrial inspection · 120 engineers · 1.4K visits/wk</span>
+        </div>
+        <div class="story-body">
+          <p>Engineers used to email Word templates back to admin, who would copy-paste them into PDFs and send to customers — typically 2–3 days after the visit. Now the report ships in 14 seconds after sync.</p>
+          <p class="quote">"Customers comment on it. They say their report from us arrives faster than their report from anyone else in the industry."</p>
+          <p class="quote-by">— operations director</p>
+          <div class="story-kpis">
+            <div class="story-kpi"><div class="v">−42%</div><div class="l">report turnaround time</div></div>
+            <div class="story-kpi"><div class="v">+38%</div><div class="l">visits per engineer/day</div></div>
+            <div class="story-kpi"><div class="v">99.7%</div><div class="l">app crash-free</div></div>
+            <div class="story-kpi"><div class="v">8.2K</div><div class="l">visits/30d</div></div>
+          </div>
+        </div>
+      </article>
+
+      <article class="story">
+        <div class="story-head">
+          <span class="seg-tag">Facilities · maintenance</span>
+          <h3>HVAC technicians, finally on the same page as dispatch.</h3>
+          <span class="where">Facilities maintenance · 64 technicians · multi-site</span>
+        </div>
+        <div class="story-body">
+          <p>Dispatch used to call technicians for status updates and re-route by phone. The new app shows live ETAs, on-site status, and parts-needed flags — dispatch reroutes by drag-and-drop, and the technician's app updates instantly.</p>
+          <p class="quote">"Dispatch went from a phone room to a control room. We don't even ring anyone unless something is on fire."</p>
+          <p class="quote-by">— head of dispatch</p>
+          <div class="story-kpis">
+            <div class="story-kpi"><div class="v">−51%</div><div class="l">dispatch phone calls</div></div>
+            <div class="story-kpi"><div class="v">+27%</div><div class="l">first-time-fix rate</div></div>
+            <div class="story-kpi"><div class="v">2 wks</div><div class="l">to roll out fleet-wide</div></div>
+            <div class="story-kpi"><div class="v">100%</div><div class="l">SLA visibility</div></div>
+          </div>
+        </div>
+      </article>
+
+      <article class="story">
+        <div class="story-head">
+          <span class="seg-tag">Utilities · meter reading</span>
+          <h3>Meter reading without the backend chaos at month-end.</h3>
+          <span class="where">Utility services · 38 readers · 220K meters/mo</span>
+        </div>
+        <div class="story-body">
+          <p>The team used to spend the last 3 days of each month uploading paper readings to the billing system, with chronic typos. The app captures, validates, and posts directly to the billing API — ending the month-end scramble.</p>
+          <p class="quote">"The first month-end where nobody worked the weekend. That alone justified it."</p>
+          <p class="quote-by">— finance lead, utility services</p>
+          <div class="story-kpis">
+            <div class="story-kpi"><div class="v">−96%</div><div class="l">billing typos</div></div>
+            <div class="story-kpi"><div class="v">3 days</div><div class="l">earlier monthly close</div></div>
+            <div class="story-kpi"><div class="v">100%</div><div class="l">readings GPS-tagged</div></div>
+            <div class="story-kpi"><div class="v">0</div><div class="l">paper sheets</div></div>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============== TIMELINE ============== -->
+<section class="section">
+  <div class="container split reveal-stagger" style="align-items:flex-start;gap:3rem;">
+    <div>
+      <span class="eyebrow">Implementation</span>
+      <h2 style="margin-top:1rem;max-width:18ch;">Live on both stores in 8 weeks.</h2>
+      <p style="margin-top:1.25rem;color:var(--mist-80);">Discovery, build, internal beta on a single Flutter codebase, App Store + Play Store review, fleet rollout. We carry the App Store communication; you keep running the business.</p>
+      <a href="../contact.html" class="btn btn-primary" style="margin-top:1.5rem;">Talk through your rollout
+        <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+      </a>
+    </div>
+
+    <div class="timeline">
+      <div class="tl-step">
+        <div class="wk">Week 1 · Discovery</div>
+        <h4>Map the day, the forms, the customers</h4>
+        <p>Shadow two engineers for a day each. Inventory all current forms and reports. Define the four most-common visit types. Agree on the metric we're going to move.</p>
+      </div>
+      <div class="tl-step">
+        <div class="wk">Weeks 2–4 · Build</div>
+        <h4>Flutter app · backend · admin console</h4>
+        <p>Single Flutter codebase for iOS &amp; Android. Backend on Postgres + S3. Admin console (web). Two-week sprints, demo every Friday, staging from day one.</p>
+      </div>
+      <div class="tl-step">
+        <div class="wk">Week 5 · Internal beta</div>
+        <h4>5 engineers · all visit types</h4>
+        <p>Five hand-picked engineers run their normal day on the app. Daily review of every issue. Form rules tuned. Report templates iterated.</p>
+      </div>
+      <div class="tl-step">
+        <div class="wk">Week 6 · Store submission</div>
+        <h4>App Store + Play Store review</h4>
+        <p>Test-flight builds for the wider beta. Production submission with App Store-friendly screenshots, privacy disclosures, &amp; review notes. Both stores typically clear within 5 days.</p>
+      </div>
+      <div class="tl-step">
+        <div class="wk">Week 7 · Pilot fleet</div>
+        <h4>30 engineers · live</h4>
+        <p>One service area opens on the app. Daily review for 7 days. Field issues fixed in hours, not weeks.</p>
+      </div>
+      <div class="tl-step">
+        <div class="wk">Week 8 · Fleet rollout</div>
+        <h4>All engineers · paper retired</h4>
+        <p>Remaining engineers onboarded. Paper forms officially retired. Admin console handed to dispatch and operations.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============== FAQ ============== -->
+<section class="section">
+  <div class="container split reveal-stagger" style="align-items:flex-start; gap:3rem;">
+    <div>
+      <span class="eyebrow">Common questions</span>
+      <h2 style="margin-top:1rem;max-width:18ch;">The things every operations director asks.</h2>
+      <p style="margin-top:1.25rem;color:var(--mist-80);">If yours isn't here, ask us — we'll happily talk shop with your operations team.</p>
+      <a href="../contact.html" class="btn btn-outline" style="margin-top:1.25rem;">Talk to our mobile team</a>
+    </div>
+
+    <div class="faq">
+      <details>
+        <summary>Is it iOS, Android, or both?</summary>
+        <p>Both — single Flutter codebase. We ship the same app to the App Store and Play Store and keep them in lockstep. Roughly 70% of UAE-based fleets are mixed iOS/Android, so this matters. There is no second-class platform.</p>
+      </details>
+      <details>
+        <summary>What happens if the engineer is offline for hours?</summary>
+        <p>Everything keeps working. The app captures checklists, photos, signatures and forms locally in an encrypted SQLite cache, queued for sync. We have engineers regularly going 8+ hours offline at remote sites. When connectivity returns, the queue drains automatically. Tested up to 22 hours offline with zero data loss.</p>
+      </details>
+      <details>
+        <summary>Can we customise the inspection forms per service line?</summary>
+        <p>Yes — that's why this works. New forms are configured in the admin console, not engineered. Field types, required photos, validation rules, branching logic, and the corresponding report template are all configurable. New service lines go live without an app update.</p>
+      </details>
+      <details>
+        <summary>Does it integrate with our existing dispatch/CRM/ERP?</summary>
+        <p>Yes — REST and webhook integrations are first-class. We have shipped to teams running SAP, Oracle, Salesforce, Microsoft Dynamics, and Zoho. The app posts visits, reports, mileage and expense to your system of record; your system pushes job assignments and customer data to ours.</p>
+      </details>
+      <details>
+        <summary>Photos uploaded over 3G/4G — does that drain data plans?</summary>
+        <p>We compress and chunk uploads. A typical 4-photo visit is ~3 MB after compression. Upload happens in the background; the app never blocks the engineer waiting on a photo to send. We've measured average daily data usage at ~38 MB per engineer.</p>
+      </details>
+      <details>
+        <summary>How long is field-engineer training?</summary>
+        <p>One 90-minute session is enough. The interface is intentionally minimal — five screens, big tap targets, optimistic UI. We watched engineers self-onboard in pilots without training, but the 90-minute session covers the edge cases (offline mode, signature failures, manager re-assignments).</p>
+      </details>
+      <details>
+        <summary>What's the app-store update cadence?</summary>
+        <p>We ship feature updates monthly, hotfixes within hours when needed. App Store reviews are now consistently sub-24h for established apps; Play Store is faster. We use staged rollouts (1% → 10% → 100% over 48h) and a remote-config kill-switch on every new behaviour.</p>
+      </details>
+      <details>
+        <summary>What does a typical project cost?</summary>
+        <p>A flat build fee for the initial implementation, then a platform subscription scaled by engineer-seat. The build fee is typically 8–12 weeks of our team's time. Custom integrations are scoped separately. We share a worked example in the discovery call — no obligation.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ============== CROSS-LINK RIBBON ============== -->
+<section class="section" style="padding-top:0;">
+  <div class="container reveal">
+    <div class="ribbon">
+      Need the consumer-side too? — <a href="car-wash-app.html">read the on-demand car wash case study →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============== CTA ============== -->
+<section class="section">
+  <div class="container">
+    <div class="cta-banner reveal">
+      <div class="cta-glow" aria-hidden="true"></div>
+      <span class="eyebrow" style="justify-content:center;">Build yours on the same backbone</span>
+      <h2 style="margin-top:1rem;">A field-ops app, on the App Store, in 8 weeks.</h2>
+      <p>Bring us your forms, your customers, and your one biggest field-team frustration. We'll bring you a shipped app.</p>
+      <div style="display:flex; gap:.85rem; justify-content:center; flex-wrap:wrap; margin-top:1.5rem;">
+        <a href="../contact.html" class="btn btn-primary btn-lg">Talk to our mobile team
+          <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+        </a>
+        <a href="../contact.html" class="btn btn-outline btn-lg">See pricing</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <a href="../index.html" class="brand" aria-label="AlfaTechLabs home" style="margin-bottom:1rem;"><span class="brand-wordmark">AlfaTechLabs</span><span class="brand-rule" aria-hidden="true"></span></a>
+        <p style="color:var(--mist-60);max-width:36ch;">Amplifying businesses through powerful software + AI. Based in the United Arab Emirates.</p>
+        <p class="mono" style="margin-top:1rem;color:var(--mist-40);font-size:0.9rem;">hello@alfatechlabs.net</p>
+      </div>
+      <div class="footer-col"><h4>Company</h4><a href="../about.html">About us</a><a href="../portfolio.html">Portfolio</a><a href="../contact.html">Contact</a></div>
+      <div class="footer-col"><h4>Solutions</h4><a href="business-tracking.html">Business tracking</a><a href="agentic-rag.html">Agentic RAG</a><a href="car-wash-app.html">Mobile apps</a><a href="procurement-approval-engine.html">Automation</a></div>
+      <div class="footer-col"><h4>Legal</h4><a href="../privacy.html">Privacy policy</a><a href="../terms.html">Terms of service</a></div>
+    </div>
+    <div class="footer-bottom"><span>© <span data-year>2026</span> AlfaTechLabs · United Arab Emirates</span><!-- Social links — re-enable when accounts are live.
+<div class="social"><a href="#" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S.02 4.88.02 3.5C.02 2.12 1.13 1 2.5 1s2.48 1.12 2.48 2.5zM.22 8h4.56v14H.22V8zm7.5 0h4.37v1.92h.06c.61-1.15 2.1-2.36 4.32-2.36 4.62 0 5.47 3.04 5.47 7v7.44h-4.56v-6.6c0-1.57-.03-3.6-2.2-3.6-2.2 0-2.54 1.71-2.54 3.48V22H7.72V8z"/></svg></a></div>
+--></div>
+  </div>
+</footer>
+
+<button class="scroll-top" aria-label="Scroll to top"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 19V5M5 12l7-7 7 7"/></svg></button>
+<!-- Cinematic layer · GSAP + ScrollTrigger -->
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js" defer></script>
+<script src="../assets/js/main.js"></script>
+<script src="../assets/js/animations.js" defer></script>
+</body>
+</html>

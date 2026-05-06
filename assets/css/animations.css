@@ -1,0 +1,98 @@
+/* ============================================================
+   AlfaTechLabs · Cinematic Layer
+   3D background · Particle hero · GSAP scroll · Tilt · Magnetic
+   ============================================================ */
+
+/* --- 1. Hero particles canvas ---------------------------- */
+.atl-particles {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 900ms var(--ease, cubic-bezier(.22,.61,.36,1));
+  mix-blend-mode: screen;
+}
+.atl-particles.atl-ready { opacity: 1; }
+.hero { position: relative; }
+.hero > .container, .page-hero > .container { position: relative; z-index: 3; }
+
+/* --- 3. Page entrance ---------------------------------- */
+/* GSAP handles the hero entrance once it's parsed; nothing to gate here. */
+
+/* --- 4. 3D tilt cards ----------------------------------- */
+/* Only applied to JS-initialised elements so non-tilted variants keep their existing hover lift. */
+.atl-tilt {
+  transform-style: preserve-3d;
+  transform: perspective(900px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg)) translateZ(var(--tz, 0px)) !important;
+  transition: transform 450ms var(--ease, cubic-bezier(.22,.61,.36,1)),
+              box-shadow var(--d-base, 250ms) var(--ease, cubic-bezier(.22,.61,.36,1)),
+              border-color var(--d-base, 250ms) var(--ease, cubic-bezier(.22,.61,.36,1));
+  will-change: transform;
+}
+.atl-tilt.atl-tilting {
+  transition: transform 80ms linear, box-shadow var(--d-base, 250ms) var(--ease, cubic-bezier(.22,.61,.36,1));
+}
+
+/* Specular highlight that follows the cursor (uses --mx/--my from main.js) */
+.atl-tilt::after {
+  background: radial-gradient(420px circle at var(--mx, 50%) var(--my, 50%),
+    rgba(122,240,184,0.18) 0%,
+    rgba(25,195,125,0.06) 35%,
+    transparent 70%) !important;
+}
+
+/* Don't tilt when reduced motion is requested */
+@media (prefers-reduced-motion: reduce) {
+  .atl-tilt { transform: none !important; }
+}
+
+/* --- 5. Magnetic buttons --------------------------------- */
+/* Scoped to JS-initialised buttons; non-magnetic buttons keep existing hover behavior. */
+.btn.atl-btn-magnet {
+  --bx: 0px; --by: 0px; --bs: 1;
+  transform: translate3d(var(--bx), var(--by), 0) scale(var(--bs)) !important;
+  transition: transform 350ms var(--ease-spring, cubic-bezier(.34,1.56,.64,1)),
+              box-shadow var(--d-base, 250ms) var(--ease, cubic-bezier(.22,.61,.36,1)),
+              background var(--d-base, 250ms) var(--ease, cubic-bezier(.22,.61,.36,1)),
+              color var(--d-base, 250ms) var(--ease, cubic-bezier(.22,.61,.36,1));
+  will-change: transform;
+}
+.btn.atl-btn-magnet.atl-magnet { transition: transform 100ms linear, box-shadow var(--d-base, 250ms) var(--ease, cubic-bezier(.22,.61,.36,1)); }
+.btn.atl-btn-magnet:active { --bs: 0.97; }
+
+@media (prefers-reduced-motion: reduce) {
+  .btn.atl-btn-magnet { transform: none !important; }
+}
+
+/* --- 6. Section parallax hint -------------------------- */
+.section > .container > .section-head,
+.page-hero > .container > * {
+  will-change: transform, opacity;
+}
+
+/* --- 7. Cinematic word reveal (GSAP-driven) -------------- */
+.atl-split .word-line {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: top;
+}
+.atl-split .word-line .word {
+  display: inline-block;
+  transform: translateY(110%) rotate(6deg);
+  opacity: 0;
+  will-change: transform, opacity;
+}
+
+/* --- 8. Section entry (GSAP wires this up) -------------- */
+.atl-section-fade { opacity: 0; transform: translate3d(0, 60px, 0); will-change: transform, opacity; }
+
+/* Ensure non-JS / reduced motion shows content */
+@media (prefers-reduced-motion: reduce) {
+  .atl-section-fade { opacity: 1; transform: none; }
+  .atl-split .word-line .word { opacity: 1; transform: none; }
+  .atl-particles { display: none; }
+}
+
+/* Light mode mask for canvas */
+[data-theme="light"] .atl-particles { mix-blend-mode: multiply; opacity: 0.55; }
