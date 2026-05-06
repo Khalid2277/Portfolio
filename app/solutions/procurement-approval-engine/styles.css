@@ -274,3 +274,34 @@
       background:linear-gradient(180deg,rgba(25,195,125,0.02),transparent);
     }
     .ribbon a{ color:var(--iris-300); }
+
+    /* ── Mobile fixes (≤880px) ──────────────────────────────────────────────
+       Tighten the workflow canvas chrome and stack the top bar; allow the
+       workflow SVG and ledger rows to breathe on narrow screens. */
+    @media (max-width:880px){
+      .canvas{ border-radius:var(--r-md); }
+      .cv-chrome{ padding:.55rem .65rem; gap:.5rem; }
+      .cv-chrome .url{ font-size:.66rem; padding:.3rem .55rem; }
+      .cv-chrome .actions{ display:none; }
+
+      .cv-top{ padding:.75rem .9rem; gap:.55rem; flex-direction:column; align-items:flex-start; }
+      .cv-top h3{ font-size:.9rem; }
+      .cv-top .right{ width:100%; justify-content:flex-start; }
+
+      .cv-flow{ padding:.85rem; min-height:auto; overflow-x:auto; -webkit-overflow-scrolling:touch; }
+      .cv-flow svg{ min-width:560px; }
+
+      .cv-ledger{ padding:.85rem .9rem 1rem; }
+      .lg-row{ grid-template-columns:auto 1fr auto; gap:.55rem; font-size:.76rem; }
+      .lg-row .ts{ display:none; }
+
+      .module-visual .mv-body{
+        padding:.85rem;
+        overflow-x:auto; -webkit-overflow-scrolling:touch;
+      }
+
+      .launch-stats{ gap:.65rem; margin-top:1.25rem; }
+      .launch-stat{ padding:.95rem; }
+      .launch-stat .v{ font-size:1.3rem; }
+      .launch-stat .l{ font-size:.7rem; }
+    }

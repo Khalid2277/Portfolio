@@ -333,3 +333,47 @@
       background:linear-gradient(180deg,rgba(25,195,125,0.02),transparent);
     }
     .ribbon a{ color:var(--iris-300); }
+
+    /* ── Mobile fixes (≤880px) ──────────────────────────────────────────────
+       Appended last so they win the cascade against the unconditional
+       .ck-side / .ck-cite rules above. */
+    @media (max-width:880px){
+      .cockpit{ border-radius:var(--r-md); }
+      .ck-chrome{ padding:.55rem .65rem; gap:.5rem; }
+      .ck-chrome .url{ font-size:.66rem; padding:.3rem .55rem; }
+      .ck-chrome .actions{ display:none; }
+
+      .ck-body{ display:flex; flex-direction:column; min-height:auto; }
+      .ck-side{ display:none; }
+      .ck-cite{ display:none; }
+
+      .ck-top{ padding:.7rem .9rem; gap:.5rem; flex-wrap:wrap; }
+      .ck-top h3{ font-size:.85rem; }
+      .ck-top .meta{ font-size:.64rem; }
+
+      .ck-stream{ padding:1rem 1rem 0; gap:1rem; }
+      .msg-user{ max-width:88%; padding:.7rem .85rem; font-size:.86rem; }
+      .msg-agent{ gap:.65rem; }
+      .msg-agent .av{ width:30px; height:30px; }
+      .steps{ padding:.7rem .8rem; }
+      .steps .step{ font-size:.74rem; gap:.5rem; }
+      .answer{ font-size:.88rem; }
+
+      .ck-composer{ padding:.85rem .9rem 1rem; }
+      .ck-composer .row input{ font-size:.88rem; }
+      .ck-composer .row .send{ width:32px; height:32px; }
+
+      .module-visual .mv-body{
+        padding:.85rem;
+        overflow-x:auto; -webkit-overflow-scrolling:touch;
+      }
+
+      .launch-stats{ gap:.65rem; margin-top:1.25rem; }
+      .launch-stat{ padding:.95rem; }
+      .launch-stat .v{ font-size:1.3rem; }
+      .launch-stat .l{ font-size:.7rem; }
+    }
+    @media (max-width:480px){
+      .ck-stream{ padding:.85rem .85rem 0; }
+      .msg-user{ max-width:92%; }
+    }

@@ -441,3 +441,27 @@
 
     .live-dot{ display:inline-flex; align-items:center; gap:.4rem; font-family:'JetBrains Mono'; font-size:.7rem; letter-spacing:.1em; color:var(--iris-300); text-transform:uppercase; }
     .live-dot::before{ content:""; width:8px; height:8px; border-radius:50%; background:var(--iris-300); animation:pulseDot 1.6s ease-in-out infinite; }
+
+    /* ── Mobile fixes (≤880px) ──────────────────────────────────────────────
+       The phones-rail already scrolls horizontally; just shrink the device
+       frames so users can see most of a phone on a small screen, and tighten
+       the launch stats. */
+    @media (max-width:880px){
+      .phones-rail{ padding:1rem 1rem 1.5rem; gap:1.25rem; }
+      .ph{ width:248px; height:512px; border-radius:38px; padding:7px; }
+      .ph::after{ border-radius:38px; }
+      .ph-screen{ border-radius:32px; }
+      .ph-notch{ width:84px; height:24px; }
+      .ph-status{ padding:11px 14px 0; font-size:10.5px; }
+      .ph-body{ padding:38px 0 0; }
+      .ph-cap{ max-width:248px; }
+
+      .launch-stats{ gap:.65rem; margin-top:1.25rem; }
+      .launch-stat{ padding:.95rem; }
+      .launch-stat .v{ font-size:1.3rem; }
+      .launch-stat .l{ font-size:.7rem; }
+    }
+    @media (max-width:480px){
+      .ph{ width:228px; height:472px; }
+      .ph-cap{ max-width:228px; }
+    }

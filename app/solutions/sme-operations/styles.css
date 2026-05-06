@@ -324,3 +324,78 @@
       background:linear-gradient(180deg,rgba(25,195,125,0.02),transparent);
     }
     .ribbon a{ color:var(--iris-300); }
+
+    /* ── Mobile fixes (≤880px) ──────────────────────────────────────────────
+       Appended last so they win the cascade against the unconditional
+       .cp-side / .cp-body rules above (which previously overrode the
+       short media-query hide). On phones we keep the cockpit visible but
+       turn the sidebar into a horizontal scrolling nav rail, tighten the
+       chrome, and allow inner tables to scroll. */
+    @media (max-width:880px){
+      .cockpit{ border-radius:var(--r-md); }
+      .cp-chrome{ padding:.55rem .65rem; gap:.5rem; }
+      .cp-chrome .url{ font-size:.66rem; padding:.3rem .55rem; }
+      .cp-chrome .actions{ display:none; }
+
+      .cp-body{ display:flex; flex-direction:column; min-height:auto; }
+      .cp-side{
+        display:flex; flex-direction:row; flex-wrap:nowrap;
+        overflow-x:auto; -webkit-overflow-scrolling:touch;
+        gap:.4rem; padding:.55rem .7rem;
+        border-right:0; border-bottom:1px solid rgba(255,255,255,0.05);
+        background:rgba(255,255,255,0.012);
+        scrollbar-width:none;
+      }
+      .cp-side::-webkit-scrollbar{ display:none; }
+      .cp-side .org{
+        flex:0 0 auto; margin-bottom:0; padding:.35rem .5rem .35rem .35rem;
+      }
+      .cp-side .org .who{ display:none; }
+      .cp-side .lbl{ display:none; }
+      .cp-side .item{
+        flex:0 0 auto; padding:.42rem .65rem; font-size:.74rem;
+        white-space:nowrap;
+      }
+      .cp-side .item svg{ width:13px; height:13px; }
+      .cp-side .item .badge-mini{ display:none; }
+
+      .cp-main{ padding:1rem .9rem 1.1rem; }
+      .cp-top{
+        flex-direction:column; align-items:flex-start; gap:.55rem;
+        padding-bottom:.85rem; margin-bottom:.85rem;
+      }
+      .cp-top h3{ font-size:1rem; }
+      .cp-top .right{ width:100%; justify-content:space-between; gap:.4rem; }
+      .seg span{ padding:.28rem .5rem; font-size:.66rem; }
+
+      .cp-card{ padding:.85rem; }
+      .cp-card .hd{ flex-wrap:wrap; gap:.4rem; }
+      .cp-card .hd b{ font-size:.78rem; }
+      .cp-card .hd .legend{ gap:.5rem; }
+
+      .branch-row{ grid-template-columns:auto 1fr auto; gap:.6rem; }
+      .branch-row .pct{ display:none; }
+
+      .alert-row{ flex-wrap:wrap; }
+      .alert-row .det{ margin-left:1.4rem; width:100%; white-space:normal; }
+
+      /* Module visuals — let inner tables scroll horizontally on phones. */
+      .module-visual .mv-body{
+        padding:.85rem;
+        overflow-x:auto; -webkit-overflow-scrolling:touch;
+      }
+      .rost-tbl{ min-width:520px; }
+      .inv-tbl{ min-width:480px; }
+
+      /* Tighten the launch stats so the four numbers fit comfortably. */
+      .launch-stats{ gap:.65rem; margin-top:1.25rem; }
+      .launch-stat{ padding:.95rem; }
+      .launch-stat .v{ font-size:1.3rem; }
+      .launch-stat .l{ font-size:.7rem; }
+    }
+    @media (max-width:480px){
+      .cp-kpis{ grid-template-columns:1fr; }
+      .cp-main{ padding:.85rem .8rem 1rem; }
+      .pos{ grid-template-columns:1fr; }
+      .pos .menu{ grid-template-columns:repeat(3,1fr); }
+    }

@@ -304,3 +304,26 @@
       background:linear-gradient(180deg,rgba(25,195,125,0.02),transparent);
     }
     .ribbon a{ color:var(--iris-300); }
+
+    /* ── Mobile fixes (≤880px) ──────────────────────────────────────────────
+       Phones rail already scrolls; just shrink the frames so users can
+       see the full device on a small screen, and tighten launch stats. */
+    @media (max-width:880px){
+      .phones-rail{ padding:1rem 1rem 1.5rem; gap:1.25rem; }
+      .ph{ width:240px; height:498px; border-radius:36px; padding:7px; }
+      .ph::after{ border-radius:36px; }
+      .ph-screen{ border-radius:30px; }
+
+      .module-visual .mv-body{
+        padding:.85rem;
+        overflow-x:auto; -webkit-overflow-scrolling:touch;
+      }
+
+      .launch-stats{ gap:.65rem; margin-top:1.25rem; }
+      .launch-stat{ padding:.95rem; }
+      .launch-stat .v{ font-size:1.3rem; }
+      .launch-stat .l{ font-size:.7rem; }
+    }
+    @media (max-width:480px){
+      .ph{ width:220px; height:456px; }
+    }
