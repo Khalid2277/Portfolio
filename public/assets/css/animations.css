@@ -72,6 +72,9 @@
 }
 
 /* --- 7. Cinematic word reveal (GSAP-driven) -------------- */
+/* Words default to visible. GSAP overrides via inline `from` style when it
+ * fires; if GSAP fails to run (older browsers, JS disabled, hydration race)
+ * the user still sees the heading. */
 .atl-split .word-line {
   display: inline-block;
   overflow: hidden;
@@ -79,18 +82,34 @@
 }
 .atl-split .word-line .word {
   display: inline-block;
-  transform: translateY(110%) rotate(6deg);
-  opacity: 0;
   will-change: transform, opacity;
 }
 
-/* --- 8. Section entry (GSAP wires this up) -------------- */
-.atl-section-fade { opacity: 0; transform: translate3d(0, 60px, 0); will-change: transform, opacity; }
+/* --- 8. Reveal-class progressive enhancement --------------
+ * Legacy main.css declares every `.reveal*` element at opacity:0 and only
+ * shows them once an IntersectionObserver adds `.in`. That broke when JS
+ * hadn't yet hydrated (or hadn't observed the element yet) — content
+ * stayed invisible. Force them visible by default; LegacyEnhancers still
+ * adds `.in` so any `.reveal.in` transitions still play, but the absence
+ * of `.in` no longer hides the content. */
+.reveal,
+.reveal-up,
+.reveal-down,
+.reveal-left,
+.reveal-right,
+.reveal-scale,
+.reveal-blur,
+.reveal-stagger,
+.reveal-stagger > *,
+.text-reveal,
+.text-reveal .word {
+  opacity: 1 !important;
+  transform: none !important;
+  filter: none !important;
+}
 
 /* Ensure non-JS / reduced motion shows content */
 @media (prefers-reduced-motion: reduce) {
-  .atl-section-fade { opacity: 1; transform: none; }
-  .atl-split .word-line .word { opacity: 1; transform: none; }
   .atl-particles { display: none; }
 }
 
