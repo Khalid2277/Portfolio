@@ -2,6 +2,8 @@
 
 import { useState } from 'react';
 import { LegacyEnhancers } from '@/components/composed/LegacyEnhancers';
+import { PageTransition } from '@/components/motion/PageTransition';
+import { ParallaxBackground } from '@/components/motion/ParallaxBackground';
 import { ThemeProvider } from '@/lib/theme';
 import { MobileDrawer } from './MobileDrawer';
 import { MouseParallax } from './MouseParallax';
@@ -19,10 +21,13 @@ export function Chrome({ children }: { children: React.ReactNode }) {
 
   return (
     <ThemeProvider>
+      <ParallaxBackground />
       <SkipLink />
       <SiteHeader onOpenDrawer={() => setDrawerOpen(true)} />
       <MobileDrawer open={drawerOpen} onClose={() => setDrawerOpen(false)} />
-      <main id="main">{children}</main>
+      <main id="main">
+        <PageTransition>{children}</PageTransition>
+      </main>
       <SiteFooter />
       <ScrollTopButton />
       <MouseParallax />

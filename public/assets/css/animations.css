@@ -115,3 +115,87 @@
 
 /* Light mode mask for canvas */
 [data-theme="light"] .atl-particles { mix-blend-mode: multiply; opacity: 0.55; }
+
+/* --- 9. ParallaxBackground (CSS 3D layers) --------------- */
+/* Mounted globally inside <Chrome>. Sits behind the site chrome and content.
+ * Aggressively masked + low-opacity so it never competes with the foreground.
+ * Hidden entirely on touch / small viewports / reduced-motion (the JS toggles
+ * `display:none` on the wrapper). */
+.atl-parallax-bg {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+  /* Radial mask: only visible toward the centre of the viewport */
+  -webkit-mask-image: radial-gradient(ellipse at 50% 45%, #000 35%, transparent 85%);
+  mask-image: radial-gradient(ellipse at 50% 45%, #000 35%, transparent 85%);
+}
+.atl-parallax-bg .atl-pl {
+  position: absolute;
+  display: block;
+  pointer-events: none;
+  transform: translate3d(0, var(--py, 0px), 0);
+  will-change: transform;
+}
+
+/* Gradient orbs — soft blurred radial gradients */
+.atl-pl-orb {
+  width: 520px;
+  height: 520px;
+  border-radius: 50%;
+  filter: blur(70px);
+  opacity: 0.18;
+}
+.atl-pl-iris   { background: radial-gradient(closest-side, #19C37D, transparent 70%); }
+.atl-pl-cyan   { background: radial-gradient(closest-side, #B6F569, transparent 70%); width: 640px; height: 640px; opacity: 0.14; }
+.atl-pl-violet { background: radial-gradient(closest-side, #0B7F4F, transparent 70%); width: 480px; height: 480px; opacity: 0.16; }
+.atl-pl-mint   { background: radial-gradient(closest-side, #7AF0B8, transparent 70%); width: 400px; height: 400px; opacity: 0.12; }
+
+[data-theme="light"] .atl-pl-orb { opacity: 0.10; }
+
+/* Wireframe shapes — small, slow rotation */
+.atl-pl-shape {
+  width: 80px;
+  height: 80px;
+  opacity: 0.55;
+}
+.atl-pl-shape-1 {
+  top: 20%;
+  left: 8%;
+  animation: atl-shape-rot-cw 38s linear infinite;
+}
+.atl-pl-shape-2 {
+  top: 62%;
+  right: 10%;
+  animation: atl-shape-rot-ccw 52s linear infinite;
+}
+.atl-pl-shape-3 {
+  top: 120%;
+  left: 38%;
+  width: 110px;
+  height: 110px;
+  opacity: 0.45;
+  animation: atl-shape-rot-cw 70s linear infinite;
+}
+
+/* Two animations stacked: parallax translate (var on parent) + slow rotate (here).
+ * To preserve both we let the orb's translate live on the parent (data-speed
+ * driven), and apply rotate via CSS animation on a child element. SVGs above
+ * already have transforms inside <g> so we use `transform-origin` on the host. */
+@keyframes atl-shape-rot-cw {
+  from { transform: translate3d(0, var(--py, 0px), 0) rotate(0deg); }
+  to   { transform: translate3d(0, var(--py, 0px), 0) rotate(360deg); }
+}
+@keyframes atl-shape-rot-ccw {
+  from { transform: translate3d(0, var(--py, 0px), 0) rotate(0deg); }
+  to   { transform: translate3d(0, var(--py, 0px), 0) rotate(-360deg); }
+}
+
+/* --- 10. PageTransition wrapper ------------------------- */
+/* Framer Motion route fade. The wrapper element gets visibility/opacity from
+ * the variants; this rule only ensures the wrapper participates in normal
+ * stacking and contributes its own transform layer for GPU compositing. */
+.atl-page-transition {
+  will-change: transform, opacity;
+}
