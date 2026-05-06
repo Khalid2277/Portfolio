@@ -2,9 +2,15 @@
 // dashboard cockpit + accordion + recent work + JSON-LD).
 export default function HomePage() {
   return (
-    <main style={{ padding: '6rem 1.5rem' }}>
-      <h1>AlfaTechLabs</h1>
-      <p>React migration in progress (phase 0).</p>
-    </main>
+    <section className="page-hero">
+      <div className="container">
+        <span className="eyebrow">Phase 1 · Chrome live</span>
+        <h1 style={{ marginTop: '1rem' }}>AlfaTechLabs — chrome shell.</h1>
+        <p className="lead">
+          Header, mobile drawer, footer, theme toggle, scroll-top button, and mouse parallax
+          are all wired. Page bodies land in subsequent phases.
+        </p>
+      </div>
+    </section>
   );
 }

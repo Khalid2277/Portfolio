@@ -1,5 +1,7 @@
 import type { Metadata, Viewport } from 'next';
 import { Inter, Space_Grotesk, JetBrains_Mono } from 'next/font/google';
+import { Chrome } from '@/components/chrome/Chrome';
+import { themeInitScript } from '@/lib/theme';
 import './globals.css';
 
 // Self-hosted via next/font (eliminates render-blocking Google Fonts CSS).
@@ -25,10 +27,6 @@ const jetbrainsMono = JetBrains_Mono({
   variable: '--font-jetbrains-mono',
   display: 'swap',
 });
-
-// No-FOUC theme init — runs synchronously in <head> before paint so a saved
-// "light" preference is applied before the first frame, matching legacy behavior.
-const themeInitScript = `(function(){try{var t=localStorage.getItem('atl-theme');if(t==='light')document.documentElement.setAttribute('data-theme','light');}catch(_){}})();`;
 
 export const viewport: Viewport = {
   themeColor: '#070912',
@@ -86,7 +84,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         {/* Synchronous theme init — must run before paint to avoid FOUC. */}
         <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
       </head>
-      <body>{children}</body>
+      <body>
+        <Chrome>{children}</Chrome>
+      </body>
     </html>
   );
 }
