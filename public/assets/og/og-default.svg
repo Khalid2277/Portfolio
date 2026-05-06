@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" preserveAspectRatio="xMidYMid meet">
+  <defs>
+    <radialGradient id="iris-glow" cx="78%" cy="50%" r="55%">
+      <stop offset="0%" stop-color="#19C37D" stop-opacity="0.5"/>
+      <stop offset="55%" stop-color="#10A86A" stop-opacity="0.18"/>
+      <stop offset="100%" stop-color="#070912" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="iris-line" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#B6F569"/>
+      <stop offset="55%" stop-color="#19C37D"/>
+      <stop offset="100%" stop-color="#0B7F4F"/>
+    </linearGradient>
+    <linearGradient id="vg-iso-a" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#B6F569"/>
+      <stop offset="100%" stop-color="#19C37D"/>
+    </linearGradient>
+    <linearGradient id="vg-iso-b" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#19C37D"/>
+      <stop offset="100%" stop-color="#0B7F4F"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="630" fill="#070912"/>
+
+  <!-- Iris radial glow on the right side -->
+  <circle cx="950" cy="315" r="430" fill="url(#iris-glow)"/>
+
+  <!-- Subtle hairlines -->
+  <g stroke="#222A44" stroke-width="1" opacity="0.4">
+    <line x1="0" y1="80" x2="1200" y2="80"/>
+    <line x1="0" y1="555" x2="1200" y2="555"/>
+  </g>
+
+  <!-- Brand wordmark + accent rule (top-left) -->
+  <g transform="translate(80, 130)">
+    <text x="0" y="0" font-family="'Space Grotesk', system-ui, -apple-system, sans-serif" font-weight="700" font-size="32" letter-spacing="-0.5" fill="#F5F7FB">AlfaTechLabs</text>
+    <rect x="248" y="-12" width="60" height="2" rx="1" fill="url(#iris-line)"/>
+  </g>
+
+  <!-- Eyebrow tag -->
+  <g transform="translate(80, 210)">
+    <text x="0" y="0" font-family="'Inter', system-ui, -apple-system, sans-serif" font-weight="600" font-size="18" letter-spacing="3" fill="#7AF0B8">UAE · SOFTWARE · AUTOMATION · SECURE AI</text>
+  </g>
+
+  <!-- Main headline -->
+  <g transform="translate(80, 290)">
+    <text x="0" y="0" font-family="'Space Grotesk', system-ui, -apple-system, sans-serif" font-weight="700" font-size="64" letter-spacing="-2" fill="#F5F7FB">Software, automation,</text>
+    <text x="0" y="78" font-family="'Space Grotesk', system-ui, -apple-system, sans-serif" font-weight="700" font-size="64" letter-spacing="-2" fill="#F5F7FB">and secure AI for the</text>
+    <text x="0" y="156" font-family="'Space Grotesk', system-ui, -apple-system, sans-serif" font-weight="700" font-size="64" letter-spacing="-2" fill="url(#iris-line)">UAE.</text>
+  </g>
+
+  <!-- Iso-cube cluster (bottom-right corner, away from text) -->
+  <g transform="translate(960, 350)" opacity="0.92">
+    <polygon points="0,40 70,8 140,40 70,72" fill="url(#vg-iso-a)" opacity="0.9"/>
+    <polygon points="0,40 0,120 70,152 70,72" fill="url(#vg-iso-b)" opacity="0.7"/>
+    <polygon points="70,72 140,40 140,120 70,152" fill="#07090A" stroke="url(#vg-iso-a)" stroke-width="1.5"/>
+  </g>
+
+  <!-- Footer rule + URL -->
+  <g transform="translate(80, 590)">
+    <rect x="0" y="-16" width="32" height="2" rx="1" fill="url(#iris-line)"/>
+    <text x="0" y="6" font-family="'JetBrains Mono', ui-monospace, monospace" font-weight="500" font-size="18" fill="#F5F7FB" opacity="0.9">alfatechlabs.net</text>
+    <text x="950" y="6" font-family="'Inter', system-ui, -apple-system, sans-serif" font-weight="500" font-size="16" fill="#F5F7FB" opacity="0.5">United Arab Emirates</text>
+  </g>
+</svg>

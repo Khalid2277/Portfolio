@@ -1,0 +1,6 @@
+/* Global stylesheet entry — pulls in the legacy AlfaTechLabs design system verbatim.
+ * Both files were ported untouched from the pre-React site so the token system,
+ * fluid type, theme, animations, and component classes survive the migration. */
+
+@import "../public/assets/css/main.css";
+@import "../public/assets/css/animations.css";
